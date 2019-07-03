@@ -6,11 +6,11 @@
           "delete_on_termination": true,
           "device_name": "xvda",
           "encrypted": true,
-          "volume_size": 10,
+          "volume_size": 8,
           "volume_type": "gp2"
         }
       ],
-      "ami_name": "example-hvm-{{timestamp}}-x86_64-ebs",
+      "ami_name": "freeipa-hvm-{{timestamp}}-x86_64-ebs",
       "ami_regions": "{{user `deploy_regions`}}",
       "instance_type": "t3.micro",
       "launch_block_device_mappings": [
@@ -18,27 +18,27 @@
           "delete_on_termination": true,
           "device_name": "xvda",
           "encrypted": true,
-          "volume_size": 10,
+          "volume_size": 8,
           "volume_type": "gp2"
         }
       ],
       "region": "{{user `build_region`}}",
       "source_ami_filter": {
         "filters": {
-          "name": "debian-stretch-hvm-x86_64-gp2-*",
+          "name": "Fedora-Cloud-Base-29-*x86_64-hvm-*-gp2-*",
           "root-device-type": "ebs",
           "virtualization-type": "hvm"
         },
         "most_recent": true,
         "owners": [
-          "379101102735"
+          "125523088429"
         ]
       },
-      "ssh_username": "admin",
+      "ssh_username": "fedora",
       "tags": {
         "Application": "Example",
         "Base_AMI_Name": "{{ .SourceAMIName }}",
-        "OS_Version": "Debian Stretch",
+        "OS_Version": "Fedora 30",
         "Pre_Release": "{{user `pre_release`}}",
         "Release": "{{user `image_version`}}",
         "Team": "CISA - Development",
@@ -51,7 +51,7 @@
     {
       "groups": [
         "aws",
-        "example"
+        "freeipa"
       ],
       "playbook_file": "src/playbook.yml",
       "type": "ansible"

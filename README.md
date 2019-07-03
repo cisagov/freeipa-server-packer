@@ -1,14 +1,10 @@
-# skeleton-packer 💀📦 #
+# freeipa-packer 💀📦 #
 
-[![Build Status](https://travis-ci.com/cisagov/skeleton-packer.svg?branch=develop)](https://travis-ci.com/cisagov/skeleton-packer)
+[![Build Status](https://travis-ci.com/cisagov/freeipa-packer.svg?branch=develop)](https://travis-ci.com/cisagov/freeipa-packer)
 
-This is a generic skeleton project that can be used to quickly get a
-new [cisagov](https://github.com/cisagov) GitHub
-[packer](https://packer.io) project started.  This skeleton project
-contains [licensing information](LICENSE), as well as [pre-commit
-hooks](https://pre-commit.com) and a [Travis
-CI](https://travis-ci.com) configuration appropriate for the major
-languages that we use.
+This is a generic skeleton project for building a
+[FreeIPA](https://www.freeipa.org) image based on a generic
+[Fedora](https://getfedora.org/) base image.
 
 ## Building the Image ##
 
