@@ -31,9 +31,22 @@ env:
     jbpfg/7L4Bl57W1K/dg+yB3qrmTDoxck40ZjeqsUxv7b6DPI4j950PPiA3Lk1FofPO\
     CtBTm/+u12bXEqKzKP+nw1gGL7SmzwLRoRnV06WO6RVW4p7QcKS318DHrYbrwdfHtg\
     ihzpjw+GWxDjcWrwoV2Acj5cTdZrVJ6dsw="
-    - BUILD_REGION="us-east-2"
-    - DEPLOY_REGIONS="us-east-1,us-west-1,us-west-2"
-    - PACKER_VERSION="1.4.1"
+    # GITHUB_ACCESS_TOKEN
+    - secure: "CMVLqC2AYZ78mEn8w1GWv3p7Ci5lProngCei/Fzin0KCYrsV+DEBQCm\
+    6nKvv/wmEKIy79BpdF2GNwz23uiJXE8VF9A3WBM82coF5KfCO1CporqsQ25cLYSwCF\
+    j8AxsT4n5JXHtXVsuNk0QETspZcDBjfOtdIS0p/YYArkpBS69NFJg4d7STcCPnIgRX\
+    /06ksN9WRbliiiQ70gdkZpZE5ceqMH3mRiUFFKU9aTF2DnDDaYLVXbHqjtYL621HYa\
+    /XywUQ6YZwFEbz8n4XwGqARILJOfz0FPJcKCOAnAnbGwY3ejef15lEMDZQuPzb7kPy\
+    hhykpbNKY028781GyQxJrPMYx1AYOlAeP/vkFUGQvMXbOuEF6WLLv3CHsx1MX30EW3\
+    bZL5FBgxwvg5v/PgFQNdh8Ma+e02D2p+AHWUCf3VhwHqdKovk3ebDRlF2geJYl8KP7\
+    HiqSnKlITsvRxh+tZdvBR7rNv6+PjsjfR00hMI4KY45Z6eoLXcXz9icwT76Q1+Adnz\
+    eMACE+Yb3HLdg4mfo6Ni3Fkdz+8ODw750crSsR1/TAGeFL8F+qp+1eqScMbz+vxoyv\
+    yKDN3LCV3Sj6nmiE4d3UmjP/YKkQxD9cqCzBFMuUtJKgNajpbuy0WKdtkConb2wxSa\
+    3bX4KmUdPpv1mLNg5ugcp+8PWT1/Bb0U2A="
+    - PACKER_BUILD_REGION="us-east-2"
+    - PACKER_DEPLOY_REGIONS="us-east-1,us-west-1,us-west-2"
+    - PACKER_VERSION="1.4.2"
+    - TERRAFORM_VERSION="0.12.3"
 
 
 # Cache pip packages and pre-commit plugins to speed up builds
@@ -41,43 +54,39 @@ cache:
   pip: true
   directories:
     - $HOME/.cache/pre-commit
+    - $HOME/.cache/curl
 
 before_install:
-  # Install terraform and terraform-doc
-  - >
-    wget
-    https://releases.hashicorp.com/terraform/0.12.3/terraform_0.12.3_linux_amd64.zip
-    -O terraform.zip
-  - sudo unzip terraform.zip -d /opt/terraform
+  # make a cache directory for curl downloads
+  - mkdir -p $HOME/.cache/curl
+  # Install terraform
+  - curl --output $HOME/.cache/curl/terraform.zip
+      --time-cond $HOME/.cache/curl/terraform.zip --location
+      "https://releases.hashicorp.com/terraform/${TERRAFORM_VERSION}/terraform_${TERRAFORM_VERSION}_linux_amd64.zip"
+  - sudo unzip -d /opt/terraform $HOME/.cache/curl/terraform.zip
   - sudo ln -s /opt/terraform/terraform /usr/bin/terraform
-  - rm -f terraform.zip
-  - go get github.com/segmentio/terraform-docs
-  # install packer.io
-  - curl --output /tmp/packer.zip --location
+  # install packer
+  - curl --output $HOME/.cache/curl/packer.zip
+      --time-cond $HOME/.cache/curl/packer.zip --location
       "https://releases.hashicorp.com/packer/${PACKER_VERSION}/packer_${PACKER_VERSION}_linux_amd64.zip"
-  - sudo unzip -o -d /usr/local/bin /tmp/packer.zip
+  - sudo unzip -o -d /usr/local/bin $HOME/.cache/curl/packer.zip
 
 install:
   - pip install --upgrade --requirement requirements-test.txt
-  - export IMAGE_VERSION=$(./bump_version.sh show)
-  - eval $(./update_env.py)
+  - export PACKER_IMAGE_VERSION=$(./bump_version.sh show)
   # install roles
   - ansible-galaxy install --force --role-file src/requirements.yml
 
 script:
+  - eval $(./update_env.py)
   - pre-commit run --all-files
   - packer validate src/packer.json
   - pytest
 
 deploy:
-  # create a production image
+  # create an image
   - provider: script
-    script: packer build --timestamp-ui src/packer.json
+    script: SHERPA_TIMEOUT=30
+      ./sherpa.py packer build --timestamp-ui src/packer.json
     on:
       tags: true
-  # # create a testing image
-  # - provider: script
-  #   script: export IMAGE_VERSION=${IMAGE_VERSION}-pre &&
-  #     packer build src/packer.json
-  #   on:
-  #     tags: false

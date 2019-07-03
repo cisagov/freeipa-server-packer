@@ -5,11 +5,11 @@ This script uses the GitHub API and the TRAVIS_REPO_SLUG and TRAVIS_TAG environm
 variables to determine if the current build is a pre-release.  It will then output
 shell commands for evaulation based on the pre-release status.
 
-Exit codes:
-    0: This is a pre-release.
-   -1: This is a regular release.
-   -2: Uset environment variables: TRAVIS_REPO_SLUG or TRAVIS_TAG
-   -3: Unable to find the release using the GitHub API
+When running in a Travis CI it is possible that the GitHub API call will be rate
+limited by the shared IP of all Travis users.  Setting the GITHUB_ACCESS_TOKEN
+will cause this script to be limited by the token owner instead.
+
+See: https://developer.github.com/v3/#rate-limiting
 
 Example usage:
     eval $(./update_env.py)
@@ -28,18 +28,24 @@ def eprint(*args, **kwargs):
 
 
 def main():
-    """Check pre-release flag and return value for DEPLOY_REGIONS."""
-    g = Github()
+    """Check pre-release flag and return value for PACKER_DEPLOY_REGIONS."""
+    # if we have a Github access token use it, otherwise we may be rate limited
+    # by all the other Travis users coming from the same IP.
+    access_token = os.getenv("GITHUB_ACCESS_TOKEN")
+    if access_token:
+        g = Github(access_token)
+    else:
+        g = Github()
 
     slug = os.getenv("TRAVIS_REPO_SLUG")
     if not slug:
         eprint("TRAVIS_REPO_SLUG not set")
-        sys.exit(-2)
+        sys.exit(-1)
 
     tag = os.getenv("TRAVIS_TAG")
     if not tag:
         eprint("TRAVIS_TAG not set")
-        sys.exit(-2)
+        sys.exit(-1)
 
     try:
         repo = g.get_repo(slug)
@@ -47,20 +53,19 @@ def main():
     except UnknownObjectException:
         # Either the slug or tag were not found.
         eprint(f"Unable to lookup pre-release status for {slug}:{tag}")
-        sys.exit(-3)
+        sys.exit(-1)
 
     if release.prerelease:
-        # This is a prerelease: no DEPLOY_REGIONS.
+        # This is a prerelease: no PACKER_DEPLOY_REGIONS.
         eprint(f"{tag} is a pre-release build.")
-        print('export DEPLOY_REGIONS=""')
-        print('export PRE_RELEASE="True"')
-        sys.exit(0)
+        print('export PACKER_DEPLOY_REGIONS=""')
+        print('export PACKER_PRE_RELEASE="True"')
     else:
-        # This is a regular release: pass DEPLOY_REGIONS through.
+        # This is a regular release: do not modify PACKER_DEPLOY_REGIONS.
         eprint(f"{tag} is NOT a pre-release build.")
-        print(f'export DEPLOY_REGIONS="f{os.getenv("DEPLOY_REGIONS")}"')
-        print('export PRE_RELEASE="False"')
-        sys.exit(-1)
+        print('export PACKER_PRE_RELEASE="False"')
+
+    sys.exit(0)
 
 
 if __name__ == "__main__":
