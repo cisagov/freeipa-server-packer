@@ -2,9 +2,15 @@
 
 [![Build Status](https://travis-ci.com/cisagov/freeipa-packer.svg?branch=develop)](https://travis-ci.com/cisagov/freeipa-packer)
 
-This is a generic skeleton project for building a
-[FreeIPA](https://www.freeipa.org) image based on a generic
-[Fedora](https://getfedora.org/) base image.
+This is a project for building a [FreeIPA](https://www.freeipa.org)
+image based on a generic [Fedora](https://getfedora.org/) base image.
+
+Note that this AMI is a little different from others in that it
+requires the `freeipa-system-install` command (with appropriate
+arguments) to be run on first boot.  That command cannot be run at AMI
+build time because it fails if certain runtime checks fail; for
+instance, the hostname and IP of the machine where the command is
+being run must agree with what is in DNS.
 
 ## Building the Image ##
 
