@@ -8,9 +8,9 @@ module "iam_user" {
 
   add_packer_permissions = true
   ssm_parameters         = ["/cyhy/dev/users", "/ssh/public_keys/*"]
-  user_name              = "test-skeleton-packer"
+  user_name              = "test-freeipa-packer"
   tags = {
     Team        = "CISA - Development"
-    Application = "skeleton-packer"
+    Application = "freeipa-packer"
   }
 }
