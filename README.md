@@ -10,7 +10,10 @@ requires the `freeipa-system-install` command (with appropriate
 arguments) to be run on first boot.  That command cannot be run at AMI
 build time because it fails if certain runtime checks fail; for
 instance, the hostname and IP of the machine where the command is
-being run must agree with what is in DNS.
+being run must agree with what is in DNS.  The best way to make
+`freeipa-system-install` run at first boot is to use
+[Terraform](https://www.terraform.io/) to configure
+[cloud-init](https://cloud-init.io/).
 
 ## Pre-requisites ##
 
