@@ -6,12 +6,13 @@ This is a project for building a [FreeIPA](https://www.freeipa.org)
 image based on a generic [Fedora](https://getfedora.org/) base image.
 
 Note that this AMI is a little different from others in that it
-requires the `freeipa-system-install` command (with appropriate
-arguments) to be run on first boot.  That command cannot be run at AMI
-build time because it fails if certain runtime checks fail; for
-instance, the hostname and IP of the machine where the command is
-being run must agree with what is in DNS.  The best way to make
-`freeipa-system-install` run at first boot is to use
+requires the
+[`freeipa-system-install`](https://linux.die.net/man/1/ipa-server-install)
+command (with appropriate arguments) to be run on first boot.  That
+command cannot be run at AMI build time because it fails if certain
+runtime checks fail; for instance, the hostname and IP of the machine
+where the command is being run must agree with what is in DNS.  The
+best way to make `freeipa-system-install` run at first boot is to use
 [Terraform](https://www.terraform.io/) to configure
 [cloud-init](https://cloud-init.io/).
 
