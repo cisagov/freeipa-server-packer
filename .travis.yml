@@ -7,30 +7,30 @@ services: docker
 env:
   global:
     # AWS_ACCESS_KEY_ID
-    - secure: "jgVYFUvaYPanAFYWvfdWXo/HzcIqUiDZ8O8K0SNgvCqtEwd+NDmPf97\
-    KyVg7xfGVinBVLN2gi0iGvp/SrspKy+2ad3x21JBkdbscWQifLqKm3b4NBp6OWCZQs\
-    zPLfLs6smFpyvccd11UfoZ046rinBG9APCJpVFYjwaDqyCu8344y1761g+pHJjP/7u\
-    NwX26izLRtaOAXJJ+QydOJ5GpS2jUnDc1p9R04rJmS0UO7SrTeR9lFrkSRg80o80Dt\
-    tvuGSyBeUh7K4beLFOP19nL//uprkK611aFpb8zI+FAp0RslL+YBb8+xwb7fInFUoI\
-    JFAXFc2ZUrQ8QJ2W8LXCKERRA6DxDwgsTGHzzxyqNF+rrQO2gkZPgUs/+HhU6qYzrh\
-    O+UgspQjhexXFGl+7UFTkLgEmVaUqKb28xXb6nC/3Phuelwsu8yBOs9tRH8IjYZC6z\
-    kr5Lz8vpv2u7VHU5tn7jYUI5RWrSP/234qaKkmD9gXjw0jequdOmDQT0VcuWDinN5w\
-    tFoP4K83hW76AH2kx4ijjlVVh41vXl4WoqdTEZCrh0gTYZmflwK360CCUoTYj4IsVB\
-    T6VYn3Yj1lAEkvZfuqwABGkB3GslsyEFJB3q9+yQUUH150wF4rLnw+r8J3QbKJximf\
-    GlvjgMzHI9NcCX7JRnPxhkn2QoBuKJCcQY="
-    - AWS_DEFAULT_REGION="us-east-2"
+    - secure: "c1wgUDKOLt+TmTYUA9ET5UTrx9dy2NvGxxEdFAqDmO/8hj4cDk5MrdG\
+      z6A/r/GPFelzqfvDxBfZSTpduZXp2hkFVUQgTiCQYEWi3/mDouTAUPN5RTTlygYl\
+      cOBevSNHcyADAQS9odSWclskE8ahPK6crIQZOnQCeXugh6V7a+43TX6z77l8ZTAo\
+      8weZkOcvT7Qe3qXf5ppoBzVvTMD8HbyiPr+8EtPxaZSMT5kJhN/jVpOxB+1VaM94\
+      He+L+rFgFy8s2kJ9E3oyg7oYx32DSBMY5slPSX3hYEsw0zoZB8NeLApEVLnKDEp2\
+      fdiPlOUNcdSLwJRu4yb4VVy82NFvEr/ekHZaTyVPqSZi32Z5vGjusR8yiEnTAVBF\
+      w87x+VomGjlhpGERB7n6BrZJ0GL1r3sxdaXIOxkhP2Uj2p/tPU8cNKN+OuPt6iRi\
+      hxYWxn6m4Syvm6B5ZxBTv7V2kQoBWY/PqjXsVvBw1NG6tsMXVWNw6cG1wur9MIKA\
+      rzko0SdRgz3NFFhrshaHkFW73Q3evZJJPWJGMWun/72z1anIgziPNtm5NR2Anxnt\
+      WTRTXovc0834hUPwE+TzQ2uLJfUs6jNX9teIZjAkvgpmHS7vc8YVx+s10tdz3Aej\
+      CvL0lAQJBOWcPT2C6Kvl4irF2PTXKg8LuI4VQp6E/JdEiE6gNfXE="
+    - AWS_DEFAULT_REGION="us-east-1"
     # AWS_SECRET_ACCESS_KEY
-    - secure: "T2DoaM0ft65k73Dg9HLOoBH0kCBpR9Uf1I41hIV1DuPD77Bagm3/gnc\
-    TeMrZiEGiOqwgZqNPv++vRV0ErImqw6zdAazBODdVJNii6p7D4WhvU8xWepH7J0t7t\
-    nyseK+cpAVtWjonvh7HAC4kEOPFTJqeiUjfE5RxEWIg1kLdJhvje017OEZCJ1aGxbI\
-    HlPXxGluL/XW8KDbSwxRho1hDs6FPdnS6q/O7gxLaH/RVCc1oeJXFi78pOZikSDGuZ\
-    arGZCZyR40eZNTmvwAHPQGb+m0Y1VuiBsVKliwBxa4Q/2N0uX1HBd6smLjF/E+G5o1\
-    y79S0V1EOlX5RKNk6SqYf6OMejNjlxLi6X79WXx6U/OQq1eJKzWnhfbmKRgHtbEsoL\
-    MY3yQdYSQj19ZoBI9q6+E/ErPaIWhRkB2n26Fb4YfuTGjGyTVwX5DmXVk/LorI3NNa\
-    OlTf2Y+PJmxOTO0kQ0Y0koZHJjVW4AnR+zTXvaZ5/wLWUwdBXaJhc95Dkp+tlv0g4R\
-    jbpfg/7L4Bl57W1K/dg+yB3qrmTDoxck40ZjeqsUxv7b6DPI4j950PPiA3Lk1FofPO\
-    CtBTm/+u12bXEqKzKP+nw1gGL7SmzwLRoRnV06WO6RVW4p7QcKS318DHrYbrwdfHtg\
-    ihzpjw+GWxDjcWrwoV2Acj5cTdZrVJ6dsw="
+    - secure: "Pwd11CJAvz8Bo36JFYylLk75rwcqZbo3XhfNtaQ2nILfXRsBbo6CGJi\
+      UvoVblFF48L89pFVRdcN+pdWBHqQ/ku4t967RO3g3W53fV0EKOPfOtQ4zQYm5+Sc\
+      4FauNp43rpvAGYe5O/tCtR8PQPYPLfK8Sb5Po5VEWfDc18Qbaw/k+XqOAHcMg2RL\
+      R5ddaOb9IDEi09Ip6rHRMmwn/rSXg19ToGpPUVNkOVt2sWCWWYjqnjPKF7LuvdSl\
+      bf1dwHNYtzfMxJkpDfYGYq6YLZoZvjMjcGH4eIgAU+qf56S8D7tslWjMnA7Hyewn\
+      dH1XyS+dIKVGF6cCupnusUVfJjwevrL108TT60HAcfhHDhWZKMTyrgmrDGEKFqx8\
+      kGD0Yv8NIJCXVzkKyMkVqaHvNuR6YIxsdFOf3CTnX+SObrXTlh7mN5yngLEpTxDl\
+      jnKIRk46PDT4ux3P0lfEfUwkcJQEImqbnQoMn+ADfPbseAB7/pcyf59Z6VebEb/t\
+      z2Iwfr5SGAyQloUYKcSq1zTQ4qMBwlmVVyMa5g4/DHWXyBnR0caInV0vfasfjAld\
+      cu6sz7HqDaySgrmCd9sYYhsrP9cm6bpSgDuM2iEqAORfn1JRWVhZyYaUc6RRrTnO\
+      EhhR3zRIrp/qmDstgDO6VybTJ5Z5opu1evmVc+OyD+Nnh0ZpIq1U="
     # GITHUB_ACCESS_TOKEN
     - secure: "CMVLqC2AYZ78mEn8w1GWv3p7Ci5lProngCei/Fzin0KCYrsV+DEBQCm\
     6nKvv/wmEKIy79BpdF2GNwz23uiJXE8VF9A3WBM82coF5KfCO1CporqsQ25cLYSwCF\
