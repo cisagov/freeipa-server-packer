@@ -4,6 +4,6 @@ terraform {
     bucket         = "playground-terraform-state-storage"
     dynamodb_table = "terraform-state-lock"
     region         = "us-east-1"
-    key            = "freeipa-packer/terraform.tfstate"
+    key            = "freeipa-server-packer/terraform.tfstate"
   }
 }

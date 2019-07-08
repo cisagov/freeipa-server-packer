@@ -1,6 +1,6 @@
-# freeipa-packer 💀📦 #
+# freeipa-server-packer 💀📦 #
 
-[![Build Status](https://travis-ci.com/cisagov/freeipa-packer.svg?branch=develop)](https://travis-ci.com/cisagov/freeipa-packer)
+[![Build Status](https://travis-ci.com/cisagov/freeipa-server-packer.svg?branch=develop)](https://travis-ci.com/cisagov/freeipa-server-packer)
 
 This is a project for building a [FreeIPA](https://www.freeipa.org)
 image based on a generic [Fedora](https://getfedora.org/) base image.
