@@ -25,4 +25,4 @@
   become: yes
   become_method: sudo
   roles:
-    - freeipa
+    - freeipa_server

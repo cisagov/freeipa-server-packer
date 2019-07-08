@@ -10,7 +10,7 @@
           "volume_type": "gp2"
         }
       ],
-      "ami_name": "freeipa-hvm-{{timestamp}}-x86_64-ebs",
+      "ami_name": "freeipa-server-hvm-{{timestamp}}-x86_64-ebs",
       "ami_regions": "{{user `deploy_regions`}}",
       "instance_type": "t3.micro",
       "launch_block_device_mappings": [
