@@ -36,9 +36,9 @@
       },
       "ssh_username": "fedora",
       "tags": {
-        "Application": "Example",
+        "Application": "FreeIPA server",
         "Base_AMI_Name": "{{ .SourceAMIName }}",
-        "OS_Version": "Fedora 30",
+        "OS_Version": "Fedora 29",
         "Pre_Release": "{{user `pre_release`}}",
         "Release": "{{user `image_version`}}",
         "Team": "CISA - Development",
