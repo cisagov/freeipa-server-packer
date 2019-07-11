@@ -3,7 +3,8 @@
 [![Build Status](https://travis-ci.com/cisagov/freeipa-server-packer.svg?branch=develop)](https://travis-ci.com/cisagov/freeipa-server-packer)
 
 This is a project for building a [FreeIPA](https://www.freeipa.org)
-image based on a generic [Fedora](https://getfedora.org/) base image.
+server image based on a generic [Fedora](https://getfedora.org/) base
+image.
 
 Note that this AMI is a little different from others in that it
 requires the

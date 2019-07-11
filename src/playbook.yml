@@ -21,7 +21,7 @@
     - nvme
 
 - hosts: freeipa
-  name: Install FreeIPA
+  name: Install FreeIPA server
   become: yes
   become_method: sudo
   roles:
