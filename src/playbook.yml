@@ -26,3 +26,10 @@
   become_method: sudo
   roles:
     - freeipa_server
+  tasks:
+    # boto3 will be needed to pull certificates from S3
+    - name: Install boto3
+      pip:
+        executable: pip3
+        name:
+          - boto3
