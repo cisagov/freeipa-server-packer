@@ -20,6 +20,13 @@
     # volumes as NVMe block devices, so that's why we need nvme here.
     - nvme
 
+- hosts: clamav
+  name: ClamAV-specific roles
+  become: yes
+  become_method: sudo
+  roles:
+    - clamav
+
 - hosts: freeipa
   name: Install FreeIPA server
   become: yes
