@@ -54,6 +54,7 @@
     {
       "groups": [
         "aws",
+        "clamav",
         "freeipa"
       ],
       "playbook_file": "src/playbook.yml",
