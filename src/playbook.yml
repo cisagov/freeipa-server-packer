@@ -13,7 +13,7 @@
     - libselinux_python
     # Since we use Fedora 29 (which has SELinux enabled), libselinux-python is
     # needed to make certain downstream ansible commands work; for more info:
-    #  https://docs.ansible.com/ansible/latest/installation_guide/intro_installation.html#managed-node-requirements
+    # https://docs.ansible.com/ansible/latest/installation_guide/intro_installation.html#managed-node-requirements
 
 - hosts: aws
   name: AWS-specific roles
