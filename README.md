@@ -33,11 +33,11 @@ your AWS credentials file:
 * `cool-users-provisionaccount`
 
 The easiest way to set up those profiles is to use our
-[aws-profile-sync](https://github.com/cisagov/aws-profile-sync) utility.
+[`aws-profile-sync`](https://github.com/cisagov/aws-profile-sync) utility.
 Follow the usage instructions in that repository before continuing with the
 next steps.  Note that you will need to know where your team stores their
 remote profile data in order to use
-[aws-profile-sync](https://github.com/cisagov/aws-profile-sync).
+[`aws-profile-sync`](https://github.com/cisagov/aws-profile-sync).
 
 To create the build user, follow these instructions:
 
@@ -127,9 +127,9 @@ The [Packer template](src/packer.json) requires two environment variables to be 
 Additionally, the following optional environment variables can be used
 by the [Packer template](src/packer.json) to tag the final image:
 
-* `GITHUB_IS_PRERELEASE`: Boolean pre-release status
-* `GITHUB_RELEASE_TAG`: Image version
-* `GITHUB_RELEASE_URL`: URL pointing to the related GitHub release
+* `GITHUB_IS_PRERELEASE`: Boolean pre-release status.
+* `GITHUB_RELEASE_TAG`: Image version.
+* `GITHUB_RELEASE_URL`: URL pointing to the related GitHub release.
 
 Here is an example of how to kick off a pre-release build:
 
@@ -159,6 +159,19 @@ inner workings:
 
 ```console
 ./patch_packer_config.py --help
+```
+
+### Giving Other AWS Accounts Permission to Launch the Image ###
+
+After the AMI has been successfully created, you may want to allow other
+accounts in your AWS organization permission to launch it.  For this project,
+we want to allow the "Shared Services" account to launch the
+most-recently-created AMI.  To do that, follow these instructions:
+
+```console
+cd terraform-post-packer
+terraform init --upgrade=true
+terraform apply
 ```
 
 ## Contributing ##
