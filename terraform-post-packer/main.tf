@@ -16,12 +16,12 @@ provider "aws" {
 data "aws_caller_identity" "images" {
 }
 
-# The most-recent AMI created by cisagov/skeleton-packer-cool
-data "aws_ami" "example" {
+# The most-recent AMI created by cisagov/freeipa-server-packer
+data "aws_ami" "freeipa_server" {
   filter {
     name = "name"
     values = [
-      "example-hvm-*-x86_64-ebs",
+      "freeipa-server-hvm-*-x86_64-ebs",
     ]
   }
 
@@ -48,6 +48,6 @@ module "ami_launch_permission" {
     aws.master = aws.master
   }
 
-  account_name_regex = "^env"
-  ami_id             = data.aws_ami.example.id
+  account_name_regex = "^Shared Services$"
+  ami_id             = data.aws_ami.freeipa_server.id
 }
