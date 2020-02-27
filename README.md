@@ -165,7 +165,7 @@ inner workings:
 
 After the AMI has been successfully created, you may want to allow other
 accounts in your AWS organization permission to launch it.  For this project,
-we want to allow all accounts whose names begin with "env" to launch the
+we want to allow the "Shared Services" account to launch the
 most-recently-created AMI.  To do that, follow these instructions:
 
 ```console
