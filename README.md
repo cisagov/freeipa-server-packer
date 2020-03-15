@@ -64,6 +64,10 @@ existing secrets on the [appropriate
 page](https://github.com/cisagov/freeipa-server-packer/settings/secrets)
 in the repository's settings.
 
+IMPORTANT: The account where your images will be built must have a VPC and
+a public subnet both tagged with the name "AMI Build", otherwise `packer`
+will not be able to build images.
+
 ## Building the Image ##
 
 ### Using GitHub Actions ###
