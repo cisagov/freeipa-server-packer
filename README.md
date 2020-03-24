@@ -24,15 +24,12 @@ code will create the user with the appropriate name and permissions.  This only
 needs to be run once per project, per AWS account.  This user will also be used by
 GitHub Actions.
 
-Before the build user can be created, the following profiles must exist in
+Before the build user can be created, the following profile must exist in
 your AWS credentials file:
 
-* `cool-images-provisionec2amicreateroles`
-* `cool-images-provisionparameterstorereadroles`
 * `cool-terraform-backend`
-* `cool-users-provisionaccount`
 
-The easiest way to set up those profiles is to use our
+The easiest way to set up that profile is to use our
 [`aws-profile-sync`](https://github.com/cisagov/aws-profile-sync) utility.
 Follow the usage instructions in that repository before continuing with the
 next steps.  Note that you will need to know where your team stores their
@@ -47,10 +44,9 @@ terraform init --upgrade=true
 terraform apply
 ```
 
-Once the user is created you will need to update the [repository's
-secrets](https://help.github.com/en/actions/configuring-and-managing-workflows/creating-and-storing-encrypted-secrets)
-with the new encrypted environment variables. This should be done
-using the
+Once the user is created you will need to update the
+[repository's secrets](https://help.github.com/en/actions/configuring-and-managing-workflows/creating-and-storing-encrypted-secrets)
+with the new encrypted environment variables. This should be done using the
 [`terraform-to-secrets`](https://github.com/cisagov/development-guide/tree/develop/project_setup#terraform-iam-credentials-to-github-secrets-)
 tool available in the [development
 guide](https://github.com/cisagov/development-guide). Instructions for
@@ -86,7 +82,7 @@ how the build was triggered from GitHub.
    with the "This is a pre-release" checkbox checked.  An image will be built
    and deployed using the [`prerelease`](.github/workflows/prerelease.yml)
    workflow.  This should be configured to deploy the image to a single region
-   using a non-production account.
+   using a non-production account (e.g. "staging").
 1. **Production release deploy**: Publish a GitHub release with
    the "This is a pre-release" checkbox unchecked.  An image will be built
    and deployed using the [`release`](.github/workflows/release.yml)
@@ -163,10 +159,13 @@ inner workings:
 After the AMI has been successfully created, you may want to allow other
 accounts in your AWS organization permission to launch it.  For this project,
 we want to allow the "Shared Services" account to launch the
-most-recently-created AMI.  To do that, follow these instructions:
+most-recently-created AMI.  To do that, follow these instructions, noting that
+"ENVIRONMENT_TYPE" below should be replaced with where the AMI was created
+(e.g "production", "staging", etc.):
 
 ```console
 cd terraform-post-packer
+terraform workspace select ENVIRONMENT_TYPE
 terraform init --upgrade=true
 terraform apply
 ```
