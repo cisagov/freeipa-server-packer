@@ -1,5 +1,5 @@
 ---
-- hosts: freeipa
+- hosts: all
   name: Install FreeIPA server
   become: yes
   become_method: sudo
