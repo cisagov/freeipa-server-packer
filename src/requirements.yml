@@ -16,7 +16,13 @@
   name: nvme
 - src: https://github.com/cisagov/ansible-role-persist-journald
   name: persist_journald
+- src: https://github.com/cisagov/ansible-role-pip
+  name: pip
 - src: https://github.com/cisagov/ansible-role-python
   name: python
+  version: improvement/install-python-apt
+- src: https://github.com/cisagov/ansible-role-remove-python2
+  name: remove_python2
+  version: bugfix/no-python-pip-package
 - src: https://github.com/cisagov/ansible-role-upgrade
   name: upgrade
