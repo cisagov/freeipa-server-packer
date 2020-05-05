@@ -63,6 +63,10 @@
   ],
   "provisioners": [
     {
+      "playbook_file": "src/python.yml",
+      "type": "ansible"
+    },
+    {
       "ansible_env_vars": [
         "AWS_DEFAULT_REGION={{user `build_region`}}"
       ],
