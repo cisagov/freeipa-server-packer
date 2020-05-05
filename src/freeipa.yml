@@ -6,9 +6,11 @@
   roles:
     - freeipa_server
   tasks:
-    # boto3 will be needed to pull certificates from S3
-    - name: Install boto3
-      pip:
-        executable: pip3
+    # boto3 will be needed to pull certificates from S3, and dig is
+    # needed to perform some DNS lookups.  Both are used in cloud-init
+    # scripts.
+    - name: Install boto3 and dig
+      package:
         name:
-          - boto3
+          - bind-utils
+          - python3-boto3
