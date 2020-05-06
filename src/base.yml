@@ -1,0 +1,20 @@
+---
+- hosts: all
+  name: Setup base image
+  become: yes
+  become_method: sudo
+  roles:
+    - banner
+    - dev_ssh_access
+    - persist_journald
+    - htop
+    - clamav
+  tasks:
+    # Since we use Fedora 31 (which has SELinux enabled),
+    # python3-libselinux is needed to make certain downstream ansible
+    # commands work; for more info:
+    # https://docs.ansible.com/ansible/latest/installation_guide/intro_installation.html#managed-node-requirements
+    - name: Install python3-libselinux
+      package:
+        name:
+          - python3-libselinux

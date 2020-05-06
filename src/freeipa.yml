@@ -1,0 +1,16 @@
+---
+- hosts: all
+  name: Install FreeIPA server
+  become: yes
+  become_method: sudo
+  roles:
+    - freeipa_server
+  tasks:
+    # boto3 will be needed to pull certificates from S3, and dig is
+    # needed to perform some DNS lookups.  Both are used in cloud-init
+    # scripts.
+    - name: Install boto3 and dig
+      package:
+        name:
+          - bind-utils
+          - python3-boto3
