@@ -10,6 +10,8 @@
   name: dev_ssh_access
 - src: https://github.com/cisagov/ansible-role-freeipa-server
   name: freeipa_server
+- src: https://github.com/cisagov/ansible-role-hardening
+  name: harden
 - src: https://github.com/cisagov/ansible-role-htop
   name: htop
 - src: https://github.com/cisagov/ansible-role-libselinux-python
@@ -24,5 +26,7 @@
   name: python
 - src: https://github.com/cisagov/ansible-role-remove-python2
   name: remove_python2
+- src: https://github.com/cisagov/ansible-role-ufw
+  name: ufw
 - src: https://github.com/cisagov/ansible-role-upgrade
   name: upgrade

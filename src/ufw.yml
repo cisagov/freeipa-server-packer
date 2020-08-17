@@ -1,0 +1,28 @@
+---
+- hosts: all
+  name: Install ufw
+  become: yes
+  become_method: sudo
+  roles:
+    - ufw
+  tasks:
+    - name: Allow incoming traffic through TCP ports
+      ufw:
+        proto: tcp
+        rule: allow
+        to_port: "{{ item }}"
+      loop:
+        - "88"
+        - "464"
+        - "http"
+        - "https"
+        - "ldap"
+        - "ldaps"
+    - name: Allow incoming traffic through UDP ports
+      ufw:
+        proto: udp
+        rule: allow
+        to_port: "{{ item }}"
+      loop:
+        - "88"
+        - "464"

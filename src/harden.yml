@@ -1,0 +1,15 @@
+---
+- hosts: all
+  name: Hardening tasks
+  become: yes
+  become_method: sudo
+  roles:
+    - role: harden
+      vars:
+        sshd_admin_net:
+          - 127.0.0.1/32
+      #   sshd_allow_agent_forwarding: 'yes'
+      #   sshd_allow_tcp_forwarding: 'yes'
+      #   sshd_log_level: VERBOSE
+      #   sshd_max_auth_tries: 3
+      #   sshd_max_sessions: 3
