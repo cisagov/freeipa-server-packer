@@ -1,6 +1,6 @@
 ---
 - hosts: all
-  name: Install ufw
+  name: Install and configure ufw
   become: yes
   become_method: sudo
   roles:
@@ -8,7 +8,7 @@
   tasks:
     - name: Allow incoming traffic through TCP ports
       ufw:
-        comment: "Allow {{ item }} via TCP"
+        comment: Allow {{ item }} via TCP
         proto: tcp
         rule: allow
         to_port: "{{ item }}"
@@ -21,7 +21,7 @@
         - ldaps
     - name: Allow incoming traffic through UDP ports
       ufw:
-        comment: "Allow {{ item }} via UDP"
+        comment: Allow {{ item }} via UDP
         proto: udp
         rule: allow
         to_port: "{{ item }}"
@@ -30,7 +30,7 @@
         - kpasswd
     - name: Allow ssh only from localhost
       ufw:
-        comment: "Allow ssh only from localhost"
+        comment: Allow ssh only from localhost
         interface: lo
         proto: tcp
         rule: allow
