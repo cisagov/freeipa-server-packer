@@ -42,7 +42,7 @@
     - name: Set default output policy to deny
       ufw:
         default: deny
-        direction: out
+        direction: outgoing
     - name: Allow outgoing traffic
       ufw:
         comment: Allow {{ item.port }} via {{ item.proto | upper }}
