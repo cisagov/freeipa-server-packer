@@ -1,33 +1,36 @@
 ---
 - hosts: all
+  vars:
+    ipa_ports:
+      - port: http
+        proto: tcp
+      - port: https
+        proto: tcp
+      - port: kerberos
+        proto: tcp
+      - port: kerberos
+        proto: udp
+      - port: kpasswd
+        proto: tcp
+      - port: kpasswd
+        proto: udp
+      - port: ldap
+        proto: tcp
+      - port: ldaps
+        proto: tcp
   name: Install and configure ufw
   become: yes
   become_method: sudo
   roles:
     - ufw
   tasks:
-    - name: Allow incoming traffic through TCP ports
+    - name: Allow incoming traffic
       ufw:
-        comment: Allow {{ item }} via TCP
-        proto: tcp
+        comment: Allow {{ item.port }} via {{ item.proto | upper }}
+        proto: "{{ item.proto }}"
         rule: allow
-        to_port: "{{ item }}"
-      loop:
-        - http
-        - https
-        - kerberos
-        - kpasswd
-        - ldap
-        - ldaps
-    - name: Allow incoming traffic through UDP ports
-      ufw:
-        comment: Allow {{ item }} via UDP
-        proto: udp
-        rule: allow
-        to_port: "{{ item }}"
-      loop:
-        - kerberos
-        - kpasswd
+        to_port: "{{ item.port }}"
+      loop: "{{ ipa_ports }}"
     - name: Allow ssh only from localhost
       ufw:
         comment: Allow ssh only from localhost
@@ -36,3 +39,15 @@
         proto: tcp
         rule: allow
         to_port: ssh
+    - name: Set default output policy to deny
+      ufw:
+        default: deny
+        direction: out
+    - name: Allow outgoing traffic
+      ufw:
+        comment: Allow {{ item.port }} via {{ item.proto | upper }}
+        direction: out
+        proto: "{{ item.proto }}"
+        rule: allow
+        to_port: "{{ item.port }}"
+      loop: "{{ ipa_ports }}"
