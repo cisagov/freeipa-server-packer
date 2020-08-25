@@ -5,6 +5,6 @@
   become_method: sudo
   roles:
     - role: harden
-      # vars:
-      #   sshd_admin_net:
-      #     - 127.0.0.1/32
+      vars:
+        # FreeIPA will not install with a umask of 027
+        umask_value: "022"
