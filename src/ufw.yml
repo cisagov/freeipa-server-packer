@@ -60,3 +60,19 @@
         rule: allow
         to_port: "{{ item.port }}"
       loop: "{{ incoming_and_outgoing_ports + outgoing_only_ports }}"
+    - name: Allow outgoing NTP traffic to AWS
+      ufw:
+        comment: Allow NTP via UDP to AWS
+        direction: out
+        proto: udp
+        rule: allow
+        to_ip: 169.254.169.123
+        to_port: 123
+    - name: Allow outgoing DHCP traffic
+      ufw:
+        comment: Allow DHCP via UDP
+        direction: out
+        from_port: 68
+        proto: udp
+        rule: allow
+        to_port: 67
