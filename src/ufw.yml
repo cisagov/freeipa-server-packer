@@ -1,7 +1,7 @@
 ---
 - hosts: all
   vars:
-    ipa_ports:
+    ipa_incoming_and_outgoing_ports:
       - port: http
         proto: tcp
       - port: https
@@ -18,6 +18,11 @@
         proto: tcp
       - port: ldaps
         proto: tcp
+    ipa_outgoing_only_ports:
+      - port: dns
+        proto: tcp
+      - port: dns
+        proto: udp
   name: Install and configure ufw
   become: yes
   become_method: sudo
@@ -38,7 +43,7 @@
         proto: "{{ item.proto }}"
         rule: allow
         to_port: "{{ item.port }}"
-      loop: "{{ ipa_ports }}"
+      loop: "{{ ipa_incoming_and_outgoing_ports }}"
     - name: Allow ssh only from localhost
       ufw:
         comment: Allow ssh only from localhost
@@ -54,4 +59,4 @@
         proto: "{{ item.proto }}"
         rule: allow
         to_port: "{{ item.port }}"
-      loop: "{{ ipa_ports }}"
+      loop: "{{ ipa_incoming_and_outgoing_ports + ipa_outgoing_only_ports }}"
