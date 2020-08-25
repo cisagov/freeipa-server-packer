@@ -24,6 +24,14 @@
   roles:
     - ufw
   tasks:
+    - name: Set default policies to deny
+      ufw:
+        default: deny
+        direction: "{{ item }}"
+      loop:
+        - incoming
+        - outgoing
+        - routed
     - name: Allow incoming traffic
       ufw:
         comment: Allow {{ item.port }} via {{ item.proto | upper }}
@@ -39,10 +47,6 @@
         proto: tcp
         rule: allow
         to_port: ssh
-    - name: Set default output policy to deny
-      ufw:
-        default: deny
-        direction: outgoing
     - name: Allow outgoing traffic
       ufw:
         comment: Allow {{ item.port }} via {{ item.proto | upper }}
