@@ -19,9 +19,9 @@
       - port: ldaps
         proto: tcp
     ipa_outgoing_only_ports:
-      - port: dns
+      - port: domain
         proto: tcp
-      - port: dns
+      - port: domain
         proto: udp
   name: Install and configure ufw
   become: yes
