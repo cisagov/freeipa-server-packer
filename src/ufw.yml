@@ -62,24 +62,18 @@
       loop: "{{ incoming_and_outgoing_ports + outgoing_only_ports }}"
     - name: Allow outgoing NTP traffic to AWS
       ufw:
-        comment: Allow NTP via {{ item | upper }} to AWS
+        comment: Allow NTP via UDP to AWS
         direction: out
-        proto: "{{ item }}"
+        proto: udp
         rule: allow
         # This is the special address where AWS hosts NTP
         to_ip: 169.254.169.123
         to_port: ntp
-      loop:
-        - tcp
-        - udp
     - name: Allow outgoing DHCP traffic
       ufw:
-        comment: Allow DHCP via {{ item | upper }}
+        comment: Allow DHCP via UDP
         direction: out
         from_port: bootpc
-        proto: "{{ item }}"
+        proto: udp
         rule: allow
         to_port: bootps
-      loop:
-        - tcp
-        - udp
