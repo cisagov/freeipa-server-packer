@@ -1,0 +1,106 @@
+---
+- name: Install and configure ufw
+  hosts: all
+  vars:
+    incoming_and_outgoing_ports:
+      - port: http
+        proto: tcp
+      - port: https
+        proto: tcp
+      - port: kerberos
+        proto: tcp
+      - port: kerberos
+        proto: udp
+      - port: kpasswd
+        proto: tcp
+      - port: kpasswd
+        proto: udp
+      - port: ldap
+        proto: tcp
+      - port: ldaps
+        proto: tcp
+    outgoing_only_ports:
+      - port: domain
+        proto: tcp
+      - port: domain
+        proto: udp
+  become: yes
+  become_method: sudo
+  roles:
+    - ufw
+  tasks:
+    - name: Configure default policies
+      block:
+        - name: Set all default policies to deny
+          ufw:
+            default: deny
+            direction: "{{ item }}"
+          loop:
+            - incoming
+            - outgoing
+            - routed
+    - name: Configure incoming traffic
+      block:
+        - name: Allow various incoming traffic
+          ufw:
+            comment: Allow {{ item.port }} via {{ item.proto | upper }}
+            proto: "{{ item.proto }}"
+            rule: allow
+            to_port: "{{ item.port }}"
+          loop: "{{ incoming_and_outgoing_ports }}"
+        - name: Allow incoming ssh only from lo
+          ufw:
+            comment: Allow incoming ssh only from lo
+            direction: in
+            interface: lo
+            proto: tcp
+            rule: allow
+            to_port: ssh
+    - name: Configure outgoing traffic
+      block:
+        - name: Allow various outgoing traffic
+          ufw:
+            comment: Allow {{ item.port }} via {{ item.proto | upper }}
+            direction: out
+            proto: "{{ item.proto }}"
+            rule: allow
+            to_port: "{{ item.port }}"
+          loop: "{{ incoming_and_outgoing_ports + outgoing_only_ports }}"
+        - name: Allow outgoing NTP traffic to AWS
+          ufw:
+            comment: Allow NTP via UDP to AWS
+            direction: out
+            proto: udp
+            rule: allow
+            # This is the special address where AWS hosts NTP
+            to_ip: 169.254.169.123
+            to_port: ntp
+        - name: Allow outgoing DHCP traffic
+          ufw:
+            comment: Allow DHCP via UDP
+            direction: out
+            from_port: bootpc
+            proto: udp
+            rule: allow
+            to_port: bootps
+    - name: Configure loopback traffic
+      # CIS hardening demands these changes.
+      block:
+        - name: Allow any traffic in or out from lo
+          ufw:
+            comment: Allow any traffic in or out from lo
+            direction: "{{ item }}"
+            interface: lo
+            rule: allow
+          loop:
+            - in
+            - out
+        - name: Deny any traffic in from 127.0.0.0/8 or ::1
+          ufw:
+            comment: Deny any traffic in from 127.0.0.0/8 or ::1
+            direction: in
+            from_ip: "{{ item }}"
+            rule: deny
+          loop:
+            - 127.0.0.0/8
+            - ::1

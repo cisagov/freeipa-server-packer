@@ -1,0 +1,10 @@
+---
+- hosts: all
+  name: Hardening tasks
+  become: yes
+  become_method: sudo
+  roles:
+    - role: harden
+      vars:
+        # FreeIPA will not install with a umask of 027
+        umask_value: "022"

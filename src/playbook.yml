@@ -5,8 +5,14 @@
 - name: Import cloud-init playbook
   import_playbook: cloud_init.yml
 
+- name: Import UFW playbook
+  import_playbook: ufw.yml
+
 - name: Import FreeIPA playbook
   import_playbook: freeipa.yml
 
 - name: Import AWS playbook
   import_playbook: aws.yml
+
+- name: Import hardening playbook
+  import_playbook: harden.yml
