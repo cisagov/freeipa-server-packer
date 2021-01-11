@@ -29,7 +29,7 @@
       "region_kms_key_ids": {},
       "source_ami_filter": {
         "filters": {
-          "name": "Fedora-Cloud-Base-32-*x86_64-hvm-*-gp2-*",
+          "name": "Fedora-Cloud-Base-33-*x86_64-hvm-*-gp2-*",
           "root-device-type": "ebs",
           "virtualization-type": "hvm"
         },
