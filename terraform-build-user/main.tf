@@ -16,3 +16,43 @@ module "iam_user" {
     Application = "freeipa-server-packer"
   }
 }
+
+# Attach 3rd party S3 bucket read-only policy from
+# cisagov/ansible-role-venom-tanium-client to the production
+# EC2AMICreate role
+resource "aws_iam_role_policy_attachment" "thirdpartybucketread_tanium_production" {
+  provider = aws.images-production-ami
+
+  policy_arn = data.terraform_remote_state.ansible_role_venom_tanium_client.outputs.production_bucket_policy.arn
+  role       = module.iam_user.ec2amicreate_role_production.name
+}
+
+# Attach 3rd party S3 bucket read-only policy from
+# cisagov/ansible-role-venom-tanium-client to the staging EC2AMICreate
+# role
+resource "aws_iam_role_policy_attachment" "thirdpartybucketread_tanium_staging" {
+  provider = aws.images-staging-ami
+
+  policy_arn = data.terraform_remote_state.ansible_role_venom_tanium_client.outputs.staging_bucket_policy.arn
+  role       = module.iam_user.ec2amicreate_role_staging.name
+}
+
+# Attach 3rd party S3 bucket read-only policy from
+# cisagov/ansible-role-venom-nessus-agent to the production
+# EC2AMICreate role
+resource "aws_iam_role_policy_attachment" "thirdpartybucketread_nessus_production" {
+  provider = aws.images-production-ami
+
+  policy_arn = data.terraform_remote_state.ansible_role_venom_nessus_agent.outputs.production_bucket_policy.arn
+  role       = module.iam_user.ec2amicreate_role_production.name
+}
+
+# Attach 3rd party S3 bucket read-only policy from
+# cisagov/ansible-role-venom-nessus-agent to the staging EC2AMICreate
+# role
+resource "aws_iam_role_policy_attachment" "thirdpartybucketread_nessus_staging" {
+  provider = aws.images-staging-ami
+
+  policy_arn = data.terraform_remote_state.ansible_role_venom_nessus_agent.outputs.staging_bucket_policy.arn
+  role       = module.iam_user.ec2amicreate_role_staging.name
+}
