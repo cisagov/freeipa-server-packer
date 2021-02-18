@@ -1,0 +1,46 @@
+---
+- hosts: all
+  name: Install Tanium client and configure UFW for VENOM
+  vars:
+    ports:
+      # Tanium
+      - direction: in
+        port: 17472
+        proto: tcp
+      - direction: out
+        port: 17472
+        proto: tcp
+      # Tanium threat response
+      - direction: in
+        port: 17475
+        proto: tcp
+      - direction: out
+        port: 17475
+        proto: tcp
+      # Tenable
+      - direction: in
+        port: 8834
+        proto: tcp
+      - direction: out
+        port: 8834
+        proto: tcp
+  become: yes
+  become_method: sudo
+  roles:
+    - role: venom_tanium_client
+      vars:
+        third_party_bucket_name: "{{ build_bucket }}"
+    - role: venom_nessus_agent
+      vars:
+        third_party_bucket_name: "{{ build_bucket }}"
+  tasks:
+    - name: Configure UFW for VENOM traffic
+      community.general.ufw:
+        comment: >
+          Allow {{ item.port }} {{ item.direction }} via
+          {{ item.proto | upper }}
+        direction: "{{ item.direction }}"
+        proto: "{{ item.proto }}"
+        rule: allow
+        to_port: "{{ item.port }}"
+      loop: "{{ ports }}"

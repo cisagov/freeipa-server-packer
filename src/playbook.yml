@@ -9,7 +9,10 @@
   import_playbook: ufw.yml
 
 - name: Import FreeIPA playbook
-  import_playbook: freeipa.yml
+  ansible.builtin.import_playbook: freeipa.yml
+
+- name: Import VENOM playbook
+  ansible.builtin.import_playbook: venom.yml
 
 - name: Import AWS playbook
   import_playbook: aws.yml
