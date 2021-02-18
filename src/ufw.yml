@@ -32,7 +32,7 @@
     - name: Configure default policies
       block:
         - name: Set all default policies to deny
-          ufw:
+          community.general.ufw:
             default: deny
             direction: "{{ item }}"
           loop:
@@ -42,14 +42,14 @@
     - name: Configure incoming traffic
       block:
         - name: Allow various incoming traffic
-          ufw:
+          community.general.ufw:
             comment: Allow {{ item.port }} via {{ item.proto | upper }}
             proto: "{{ item.proto }}"
             rule: allow
             to_port: "{{ item.port }}"
           loop: "{{ incoming_and_outgoing_ports }}"
         - name: Allow incoming ssh only from lo
-          ufw:
+          community.general.ufw:
             comment: Allow incoming ssh only from lo
             direction: in
             interface: lo
@@ -59,7 +59,7 @@
     - name: Configure outgoing traffic
       block:
         - name: Allow various outgoing traffic
-          ufw:
+          community.general.ufw:
             comment: Allow {{ item.port }} via {{ item.proto | upper }}
             direction: out
             proto: "{{ item.proto }}"
@@ -67,7 +67,7 @@
             to_port: "{{ item.port }}"
           loop: "{{ incoming_and_outgoing_ports + outgoing_only_ports }}"
         - name: Allow outgoing NTP traffic to AWS
-          ufw:
+          community.general.ufw:
             comment: Allow NTP via UDP to AWS
             direction: out
             proto: udp
@@ -76,7 +76,7 @@
             to_ip: 169.254.169.123
             to_port: ntp
         - name: Allow outgoing DHCP traffic
-          ufw:
+          community.general.ufw:
             comment: Allow DHCP via UDP
             direction: out
             from_port: bootpc
@@ -87,7 +87,7 @@
       # CIS hardening demands these changes.
       block:
         - name: Allow any traffic in or out from lo
-          ufw:
+          community.general.ufw:
             comment: Allow any traffic in or out from lo
             direction: "{{ item }}"
             interface: lo
@@ -96,7 +96,7 @@
             - in
             - out
         - name: Deny any traffic in from 127.0.0.0/8 or ::1
-          ufw:
+          community.general.ufw:
             comment: Deny any traffic in from 127.0.0.0/8 or ::1
             direction: in
             from_ip: "{{ item }}"
