@@ -10,11 +10,11 @@
     - htop
     - persist_journald
   tasks:
-    # Since we use Fedora 31 (which has SELinux enabled),
+    # Since we use Fedora (which has SELinux enabled),
     # python3-libselinux is needed to make certain downstream ansible
     # commands work; for more info:
     # https://docs.ansible.com/ansible/latest/installation_guide/intro_installation.html#managed-node-requirements
     - name: Install python3-libselinux
-      package:
+      ansible.builtin.package:
         name:
           - python3-libselinux
