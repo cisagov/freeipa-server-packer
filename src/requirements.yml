@@ -35,7 +35,5 @@
   name: upgrade
 - src: https://github.com/cisagov/ansible-role-venom-tanium-client
   name: venom_tanium_client
-  version: first-commits
 - src: https://github.com/cisagov/ansible-role-venom-nessus-agent
   name: venom_nessus_agent
-  version: first-commits
