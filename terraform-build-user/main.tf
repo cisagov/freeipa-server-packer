@@ -9,7 +9,7 @@ module "iam_user" {
     aws.images-staging-ssm    = aws.images-staging-ssm
   }
 
-  ssm_parameters = ["/cyhy/dev/users", "/ssh/public_keys/*"]
+  ssm_parameters = ["/cyhy/dev/users", "/ssh/public_keys/*", "/venom/tanium_hostname"]
   user_name      = "build-freeipa-server-packer"
   tags = {
     Team        = "CISA - Development"

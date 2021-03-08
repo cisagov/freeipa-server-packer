@@ -1,6 +1,6 @@
 ---
 - hosts: all
-  name: Install Tanium client and configure UFW for VENOM
+  name: Configure for VENOM
   vars:
     ports:
       # Tanium
@@ -29,6 +29,7 @@
   roles:
     - role: venom_tanium_client
       vars:
+        server_name: "{{ lookup('aws_ssm', '/venom/tanium_hostname') }}"
         third_party_bucket_name: "{{ build_bucket }}"
     - role: venom_nessus_agent
       vars:
