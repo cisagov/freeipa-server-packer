@@ -29,7 +29,7 @@
   roles:
     - role: cdm_tanium_client
       vars:
-        server_name: "{{ lookup('aws_ssm', '/venom/tanium_hostname') }}"
+        server_name: "{{ lookup('aws_ssm', '/cdm/tanium_hostname') }}"
         third_party_bucket_name: "{{ build_bucket }}"
     - role: cdm_nessus_agent
       vars:
