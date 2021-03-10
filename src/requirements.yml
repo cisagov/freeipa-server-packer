@@ -3,6 +3,10 @@
   name: amazon_ssm_agent
 - src: https://github.com/cisagov/ansible-role-banner
   name: banner
+- src: https://github.com/cisagov/ansible-role-cdm-nessus-agent
+  name: cdm_nessus_agent
+- src: https://github.com/cisagov/ansible-role-cdm-tanium-client
+  name: cdm_tanium_client
 - src: https://github.com/cisagov/ansible-role-chrony-aws
   name: chrony_aws
 - src: https://github.com/cisagov/ansible-role-clamav
@@ -33,7 +37,3 @@
   name: ufw
 - src: https://github.com/cisagov/ansible-role-upgrade
   name: upgrade
-- src: https://github.com/cisagov/ansible-role-venom-tanium-client
-  name: venom_tanium_client
-- src: https://github.com/cisagov/ansible-role-venom-nessus-agent
-  name: venom_nessus_agent

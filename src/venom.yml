@@ -1,6 +1,6 @@
 ---
 - hosts: all
-  name: Configure for VENOM
+  name: Configure for the CISA CDM environment
   vars:
     ports:
       # Tanium
@@ -27,15 +27,15 @@
   become: yes
   become_method: sudo
   roles:
-    - role: venom_tanium_client
+    - role: cdm_tanium_client
       vars:
         server_name: "{{ lookup('aws_ssm', '/venom/tanium_hostname') }}"
         third_party_bucket_name: "{{ build_bucket }}"
-    - role: venom_nessus_agent
+    - role: cdm_nessus_agent
       vars:
         third_party_bucket_name: "{{ build_bucket }}"
   tasks:
-    - name: Configure UFW for VENOM traffic
+    - name: Configure UFW for CISA CDM traffic
       community.general.ufw:
         comment: >
           Allow {{ item.port }} {{ item.direction }} via
