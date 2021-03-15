@@ -10,6 +10,9 @@ module "iam_user" {
   }
 
   ssm_parameters = [
+    "/cdm/nessus_hostname",
+    "/cdm/nessus_key",
+    "/cdm/nessus_port",
     "/cdm/tanium_hostname",
     "/cyhy/dev/users",
     "/ssh/public_keys/*",
