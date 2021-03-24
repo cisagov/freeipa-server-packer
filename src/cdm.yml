@@ -35,6 +35,12 @@
       vars:
         third_party_bucket_name: "{{ build_bucket }}"
   tasks:
+    # The Python code that will be run by cloud-init to link the
+    # Nessus Agent will require boto3
+    - name: Install boto3
+      ansible.builtin.package:
+        name:
+          - python3-boto3
     - name: Configure UFW for CISA CDM traffic
       community.general.ufw:
         comment: >
