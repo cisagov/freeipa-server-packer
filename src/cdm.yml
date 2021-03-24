@@ -33,10 +33,6 @@
         third_party_bucket_name: "{{ build_bucket }}"
     - role: cdm_nessus_agent
       vars:
-        hostname: "{{ lookup('aws_ssm', '/cdm/nessus_hostname') }}"
-        key: "{{ lookup('aws_ssm', '/cdm/nessus_key') }}"
-        nessus_groups: COOL_Fed_32
-        port: "{{ lookup('aws_ssm', '/cdm/nessus_port') }}"
         third_party_bucket_name: "{{ build_bucket }}"
   tasks:
     - name: Configure UFW for CISA CDM traffic
