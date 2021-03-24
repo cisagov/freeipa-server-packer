@@ -5,6 +5,7 @@
   name: banner
 - src: https://github.com/cisagov/ansible-role-cdm-nessus-agent
   name: cdm_nessus_agent
+  version: improvement/update-hostname
 - src: https://github.com/cisagov/ansible-role-cdm-tanium-client
   name: cdm_tanium_client
 - src: https://github.com/cisagov/ansible-role-chrony-aws
