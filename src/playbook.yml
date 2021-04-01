@@ -11,6 +11,9 @@
 - name: Import FreeIPA playbook
   ansible.builtin.import_playbook: freeipa.yml
 
+- name: Import CISA CDM playbook
+  ansible.builtin.import_playbook: cdm.yml
+
 - name: Import AWS playbook
   ansible.builtin.import_playbook: aws.yml
 

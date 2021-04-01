@@ -64,6 +64,32 @@ data "terraform_remote_state" "images_staging" {
   workspace = "staging"
 }
 
+data "terraform_remote_state" "ansible_role_cdm_nessus_agent" {
+  backend = "s3"
+
+  config = {
+    encrypt        = true
+    bucket         = "cisa-cool-terraform-state"
+    dynamodb_table = "terraform-state-lock"
+    profile        = "cool-terraform-backend"
+    region         = "us-east-1"
+    key            = "ansible-role-cdm-nessus-agent/terraform.tfstate"
+  }
+}
+
+data "terraform_remote_state" "ansible_role_cdm_tanium_client" {
+  backend = "s3"
+
+  config = {
+    encrypt        = true
+    bucket         = "cisa-cool-terraform-state"
+    dynamodb_table = "terraform-state-lock"
+    profile        = "cool-terraform-backend"
+    region         = "us-east-1"
+    key            = "ansible-role-cdm-tanium-client/terraform.tfstate"
+  }
+}
+
 data "terraform_remote_state" "users" {
   backend = "s3"
 
