@@ -15,10 +15,6 @@ module "iam_user" {
     "/ssh/public_keys/*",
   ]
   user_name = "build-freeipa-server-packer"
-  tags = {
-    Team        = "CISA - Development"
-    Application = "freeipa-server-packer"
-  }
 }
 
 # Attach 3rd party S3 bucket read-only policy from
