@@ -2,6 +2,9 @@
 - name: Import base image playbook
   ansible.builtin.import_playbook: base.yml
 
+- name: Import automated security updates playbook
+  ansible.builtin.import_playbook: automated-security-updates.yml
+
 - name: Import cloud-init playbook
   ansible.builtin.import_playbook: cloud_init.yml
 

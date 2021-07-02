@@ -1,0 +1,7 @@
+---
+- hosts: all
+  name: Configure for automated security updates
+  become: yes
+  become_method: sudo
+  roles:
+    - role: automated_security_updates
