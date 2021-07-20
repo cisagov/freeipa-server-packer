@@ -23,6 +23,7 @@
   name: freeipa_server
 - src: https://github.com/cisagov/ansible-role-hardening
   name: harden
+  version: improvement/resolve-compliance-warnings
 - src: https://github.com/cisagov/ansible-role-htop
   name: htop
 - src: https://github.com/cisagov/ansible-role-libselinux-python
