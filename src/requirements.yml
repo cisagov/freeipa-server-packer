@@ -21,6 +21,7 @@
   name: dev_ssh_access
 - src: https://github.com/cisagov/ansible-role-freeipa-server
   name: freeipa_server
+  version: improvement/add-netbios-name
 - src: https://github.com/cisagov/ansible-role-hardening
   name: harden
 - src: https://github.com/cisagov/ansible-role-htop
