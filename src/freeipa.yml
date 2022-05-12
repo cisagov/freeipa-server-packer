@@ -9,8 +9,12 @@
     # boto3 will be needed to pull certificates from S3, and dig is
     # needed to perform some DNS lookups.  Both are used in cloud-init
     # scripts.
+    #
+    # expect is used in the FreeIPA cluster update script that
+    # @bra1ncramp created in cisagov/cool-users#421.
     - name: Install boto3 and dig
       ansible.builtin.package:
         name:
           - bind-utils
+          - expect
           - python3-boto3
