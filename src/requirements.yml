@@ -15,6 +15,7 @@
   name: chrony_aws
 - src: https://github.com/cisagov/ansible-role-clamav
   name: clamav
+  version: bugfix/scans-no-run-on-fedora
 - src: https://github.com/cisagov/ansible-role-cloudwatch-agent
   name: cloudwatch_agent
 - src: https://github.com/cisagov/ansible-role-dev-ssh-access
