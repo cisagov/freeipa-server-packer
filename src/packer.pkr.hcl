@@ -125,11 +125,13 @@ build {
 
   provisioner "ansible" {
     playbook_file = "src/upgrade.yml"
+    use_proxy     = false
     use_sftp      = true
   }
 
   provisioner "ansible" {
     playbook_file = "src/python.yml"
+    use_proxy     = false
     use_sftp      = true
   }
 
@@ -137,6 +139,7 @@ build {
     ansible_env_vars = ["AWS_DEFAULT_REGION=${var.build_region}"]
     extra_arguments  = ["--extra-vars", "build_bucket=${var.build_bucket}"]
     playbook_file    = "src/playbook.yml"
+    use_proxy        = false
     use_sftp         = true
   }
 
