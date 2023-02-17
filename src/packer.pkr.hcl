@@ -70,13 +70,6 @@ data "amazon-ami" "fedora_36" {
 locals { timestamp = regex_replace(timestamp(), "[- TZ:]", "") }
 
 source "amazon-ebs" "freeipa" {
-  ami_block_device_mappings {
-    delete_on_termination = true
-    device_name           = "/dev/sda1"
-    encrypted             = true
-    volume_size           = 8
-    volume_type           = "gp3"
-  }
   ami_name                    = "freeipa-server-hvm-${local.timestamp}-x86_64-ebs"
   ami_regions                 = var.ami_regions
   associate_public_ip_address = true
