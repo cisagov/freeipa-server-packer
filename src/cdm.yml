@@ -21,6 +21,11 @@
       ansible.builtin.package:
         name:
           - python3-boto3
+    - name: Install CDM CrowdStrike
+      ansible.builtin.include_role:
+        name: crowdstrike
+      vars:
+        crowdstrike_third_party_bucket_name: "{{ build_bucket }}"
     - name: Configure UFW for CISA CDM traffic
       community.general.ufw:
         comment: >
@@ -33,6 +38,10 @@
       loop: "{{ ports }}"
       vars:
         ports:
+          # CrowdStrike
+          - direction: out
+            port: 443
+            proto: tcp
           # Tanium
           - direction: in
             port: 17472

@@ -76,3 +76,21 @@ resource "aws_iam_role_policy_attachment" "thirdpartybucketread_certificates_sta
   policy_arn = data.terraform_remote_state.ansible_role_cdm_certificates.outputs.staging_bucket_policy.arn
   role       = module.iam_user.ec2amicreate_role_staging.name
 }
+
+# Attach 3rd party S3 bucket read-only policy from
+# cisagov/ansible-role-crowdstrike to the production EC2AMICreate role
+resource "aws_iam_role_policy_attachment" "thirdpartybucketread_crowdstrike_production" {
+  provider = aws.images-production-ami
+
+  policy_arn = data.terraform_remote_state.ansible_role_crowdstrike.outputs.production_bucket_policy.arn
+  role       = module.iam_user.ec2amicreate_role_production.name
+}
+
+# Attach 3rd party S3 bucket read-only policy from
+# cisagov/ansible-role-crowdstrike to the staging EC2AMICreate role
+resource "aws_iam_role_policy_attachment" "thirdpartybucketread_crowdstrike_staging" {
+  provider = aws.images-staging-ami
+
+  policy_arn = data.terraform_remote_state.ansible_role_crowdstrike.outputs.staging_bucket_policy.arn
+  role       = module.iam_user.ec2amicreate_role_staging.name
+}

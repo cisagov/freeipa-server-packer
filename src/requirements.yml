@@ -18,6 +18,8 @@ roles:
     src: https://github.com/cisagov/ansible-role-clamav
   - name: cloudwatch_agent
     src: https://github.com/cisagov/ansible-role-cloudwatch-agent
+  - name: crowdstrike
+    src: https://github.com/cisagov/ansible-role-crowdstrike
   - name: freeipa_server
     src: https://github.com/cisagov/ansible-role-freeipa-server
   - name: harden
