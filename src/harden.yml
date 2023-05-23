@@ -3,8 +3,10 @@
   name: Hardening tasks
   become: yes
   become_method: sudo
-  roles:
-    - role: harden
+  tasks:
+    - name: Harden system
+      ansible.builtin.include_role:
+        name: harden
       vars:
         # FreeIPA will not install with a umask of 027
         umask_value: "022"

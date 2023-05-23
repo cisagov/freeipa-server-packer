@@ -26,9 +26,10 @@
         proto: udp
   become: yes
   become_method: sudo
-  roles:
-    - ufw
   tasks:
+    - name: Install UFW
+      ansible.builtin.include_role:
+        name: ufw
     - name: Configure default policies
       block:
         - name: Set all default policies to deny
