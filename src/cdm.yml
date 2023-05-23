@@ -1,40 +1,20 @@
 ---
 - hosts: all
   name: Configure for the CISA CDM environment
-  vars:
-    ports:
-      # Tanium
-      - direction: in
-        port: 17472
-        proto: tcp
-      - direction: out
-        port: 17472
-        proto: tcp
-      # Tanium threat response
-      - direction: in
-        port: 17475
-        proto: tcp
-      - direction: out
-        port: 17475
-        proto: tcp
-      # Tenable
-      - direction: in
-        port: 8834
-        proto: tcp
-      - direction: out
-        port: 8834
-        proto: tcp
   become: yes
   become_method: sudo
-  roles:
-    - role: cdm_tanium_client
+  tasks:
+    - name: Install CDM Tanium client
+      ansible.builtin.include_role:
+        name: cdm_tanium_client
       vars:
         server_name: "{{ lookup('aws_ssm', '/cdm/tanium_hostname') }}"
         third_party_bucket_name: "{{ build_bucket }}"
-    - role: cdm_nessus_agent
+    - name: Install CDM Nessus agent
+      ansible.builtin.include_role:
+        name: cdm_nessus_agent
       vars:
         third_party_bucket_name: "{{ build_bucket }}"
-  tasks:
     # The Python code that will be run by cloud-init to link the
     # Nessus Agent will require boto3
     - name: Install boto3
@@ -51,3 +31,26 @@
         rule: allow
         to_port: "{{ item.port }}"
       loop: "{{ ports }}"
+      vars:
+        ports:
+          # Tanium
+          - direction: in
+            port: 17472
+            proto: tcp
+          - direction: out
+            port: 17472
+            proto: tcp
+          # Tanium threat response
+          - direction: in
+            port: 17475
+            proto: tcp
+          - direction: out
+            port: 17475
+            proto: tcp
+          # Tenable
+          - direction: in
+            port: 8834
+            proto: tcp
+          - direction: out
+            port: 8834
+            proto: tcp

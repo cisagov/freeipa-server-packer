@@ -4,7 +4,7 @@
   become: yes
   become_method: sudo
   tasks:
-    - name: Hardening
+    - name: Harden system
       ansible.builtin.include_role:
         name: harden
       vars:

@@ -3,5 +3,7 @@
   name: Configure for automated security updates
   become: yes
   become_method: sudo
-  roles:
-    - role: automated_security_updates
+  tasks:
+    - name: Set up automated security updates
+      ansible.builtin.include_role:
+        name: automated_security_updates
