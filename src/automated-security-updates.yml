@@ -2,7 +2,7 @@
 - hosts: all
   name: Configure for automated security updates
   become: yes
-  become_method: sudo
+  become_method: ansible.builtin.sudo
   tasks:
     - name: Set up automated security updates
       ansible.builtin.include_role:
