@@ -10,7 +10,6 @@ roles:
     src: https://github.com/cisagov/ansible-role-banner
   - name: cdm_nessus_agent
     src: https://github.com/cisagov/ansible-role-cdm-nessus-agent
-    version: bugfix/incorrect-role-name
   - name: cdm_tanium
     src: https://github.com/cisagov/ansible-role-cdm-tanium-client
   - name: chrony_aws
