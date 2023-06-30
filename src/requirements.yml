@@ -1,39 +1,42 @@
 ---
-- name: amazon_ssm_agent
-  src: https://github.com/cisagov/ansible-role-amazon-ssm-agent
-- name: automated_security_updates
-  src: https://github.com/cisagov/ansible-role-automated-security-updates
-- name: banner
-  src: https://github.com/cisagov/ansible-role-banner
-- name: cdm_nessus_agent
-  src: https://github.com/cisagov/ansible-role-cdm-nessus-agent
-- name: cdm_tanium_client
-  src: https://github.com/cisagov/ansible-role-cdm-tanium-client
-- name: chrony_aws
-  src: https://github.com/cisagov/ansible-role-chrony-aws
-- name: clamav
-  src: https://github.com/cisagov/ansible-role-clamav
-- name: cloudwatch_agent
-  src: https://github.com/cisagov/ansible-role-cloudwatch-agent
-- name: freeipa_server
-  src: https://github.com/cisagov/ansible-role-freeipa-server
-- name: harden
-  src: https://github.com/cisagov/ansible-role-hardening
-- name: htop
-  src: https://github.com/cisagov/ansible-role-htop
-- name: libselinux_python
-  src: https://github.com/cisagov/ansible-role-libselinux-python
-- name: nvme
-  src: https://github.com/cisagov/ansible-role-nvme
-- name: persist_journald
-  src: https://github.com/cisagov/ansible-role-persist-journald
-- name: pip
-  src: https://github.com/cisagov/ansible-role-pip
-- name: python
-  src: https://github.com/cisagov/ansible-role-python
-- name: remove_python2
-  src: https://github.com/cisagov/ansible-role-remove-python2
-- name: ufw
-  src: https://github.com/cisagov/ansible-role-ufw
-- name: upgrade
-  src: https://github.com/cisagov/ansible-role-upgrade
+collections:
+  - community.general
+roles:
+  - name: amazon_ssm_agent
+    src: https://github.com/cisagov/ansible-role-amazon-ssm-agent
+  - name: automated_security_updates
+    src: https://github.com/cisagov/ansible-role-automated-security-updates
+  - name: banner
+    src: https://github.com/cisagov/ansible-role-banner
+  - name: cdm_nessus_agent
+    src: https://github.com/cisagov/ansible-role-cdm-nessus-agent
+  - name: cdm_tanium_client
+    src: https://github.com/cisagov/ansible-role-cdm-tanium-client
+  - name: chrony_aws
+    src: https://github.com/cisagov/ansible-role-chrony-aws
+  - name: clamav
+    src: https://github.com/cisagov/ansible-role-clamav
+  - name: cloudwatch_agent
+    src: https://github.com/cisagov/ansible-role-cloudwatch-agent
+  - name: freeipa_server
+    src: https://github.com/cisagov/ansible-role-freeipa-server
+  - name: harden
+    src: https://github.com/cisagov/ansible-role-hardening
+  - name: htop
+    src: https://github.com/cisagov/ansible-role-htop
+  - name: libselinux_python
+    src: https://github.com/cisagov/ansible-role-libselinux-python
+  - name: nvme
+    src: https://github.com/cisagov/ansible-role-nvme
+  - name: persist_journald
+    src: https://github.com/cisagov/ansible-role-persist-journald
+  - name: pip
+    src: https://github.com/cisagov/ansible-role-pip
+  - name: python
+    src: https://github.com/cisagov/ansible-role-python
+  - name: remove_python2
+    src: https://github.com/cisagov/ansible-role-remove-python2
+  - name: ufw
+    src: https://github.com/cisagov/ansible-role-ufw
+  - name: upgrade
+    src: https://github.com/cisagov/ansible-role-upgrade
