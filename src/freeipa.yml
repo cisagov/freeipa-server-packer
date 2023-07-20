@@ -2,7 +2,7 @@
 - hosts: all
   name: Install FreeIPA server
   become: yes
-  become_method: sudo
+  become_method: ansible.builtin.sudo
   tasks:
     - name: Install FreeIPA server
       ansible.builtin.include_role:
