@@ -134,9 +134,10 @@ build {
   sources = ["source.amazon-ebs.freeipa"]
 
   provisioner "ansible" {
-    playbook_file = "src/upgrade.yml"
-    use_proxy     = false
-    use_sftp      = true
+    extra_arguments = ["-vvvv"]
+    playbook_file   = "src/upgrade.yml"
+    use_proxy       = false
+    use_sftp        = true
   }
 
   provisioner "ansible" {
