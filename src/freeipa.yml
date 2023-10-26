@@ -6,7 +6,11 @@
   tasks:
     - name: Install FreeIPA server
       ansible.builtin.include_role:
-        name: freeipa_server
+        name: freeipa
+      vars:
+        freeipa_disable_trace: true
+        freeipa_enable_hsts: true
+
     # boto3 will be needed to pull certificates from S3, and dig is
     # needed to perform some DNS lookups.  Both are used in cloud-init
     # scripts.
