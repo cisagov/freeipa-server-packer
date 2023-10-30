@@ -1,7 +1,7 @@
 ---
 - hosts: all
   name: Configure for the CISA CDM environment
-  become: yes
+  become: true
   become_method: ansible.builtin.sudo
   tasks:
     - name: Install CDM Tanium client

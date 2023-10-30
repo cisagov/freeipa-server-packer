@@ -1,7 +1,7 @@
 locals {
   tags = {
-    Team        = "CISA - Development"
     Application = "freeipa-server-packer"
+    Team        = "CISA - Development"
   }
 }
 

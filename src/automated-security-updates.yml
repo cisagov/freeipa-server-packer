@@ -1,7 +1,7 @@
 ---
 - hosts: all
   name: Configure for automated security updates
-  become: yes
+  become: true
   become_method: ansible.builtin.sudo
   tasks:
     - name: Set up automated security updates

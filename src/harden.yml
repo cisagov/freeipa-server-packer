@@ -1,7 +1,7 @@
 ---
 - hosts: all
   name: Hardening tasks
-  become: yes
+  become: true
   become_method: ansible.builtin.sudo
   tasks:
     - name: Harden system

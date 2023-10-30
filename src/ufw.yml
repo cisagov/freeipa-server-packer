@@ -24,7 +24,7 @@
         proto: tcp
       - port: domain
         proto: udp
-  become: yes
+  become: true
   become_method: ansible.builtin.sudo
   tasks:
     - name: Install UFW
