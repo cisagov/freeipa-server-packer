@@ -20,6 +20,7 @@ roles:
     src: https://github.com/cisagov/ansible-role-cloudwatch-agent
   - name: crowdstrike
     src: https://github.com/cisagov/ansible-role-crowdstrike
+    version: bugfix/do-not-import-gpg-key-for-fedora-39
   - name: freeipa
     src: https://github.com/cisagov/ansible-role-freeipa-server
   - name: harden
