@@ -11,5 +11,33 @@
       ansible.builtin.include_role:  # noqa var-naming[no-role-prefix]
         name: harden
       vars:
+        # Copy the default value from
+        # https://github.com/cisagov/ansible-role-hardening-2/blob/master/defaults/main/packages.yml,
+        # but remove some packages that are required when installing
+        # freeipa-server on Fedora.
+        packages_blocklist:
+          - apport*
+          # This package is required for freeipa-server on Fedora.
+          #   - autofs
+          # These packages are required for freeipa-server on Fedora.
+          #   - avahi*
+          #   - avahi-*
+          - beep
+          - git
+          - pastebinit
+          - popularity-contest
+          - prelink
+          # This package is required for freeipa-server on Fedora.
+          #  - rpcbind
+          - rsh*
+          - rsync
+          - talk*
+          - telnet*
+          - tftp*
+          - tuned
+          - whoopsie
+          - xinetd
+          - yp-tools
+          - ypbind
         # FreeIPA will not install with a umask of 027
         umask_value: "022"
