@@ -54,3 +54,11 @@
           - ypbind
         # FreeIPA will not install with a umask of 027
         umask_value: "022"
+    - name: Delete local copies of issue and motd files
+      ansible.builtin.file:
+        path: "{{ item }}"
+        state: absent
+      delegate_to: localhost
+      loop:
+        - /tmp/issue
+        - /tmp/motd
