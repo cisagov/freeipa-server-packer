@@ -12,7 +12,6 @@ roles:
     src: https://github.com/cisagov/ansible-role-cdm-nessus-agent
   - name: cdm_tanium
     src: https://github.com/cisagov/ansible-role-cdm-tanium-client
-    version: improvement/use-latest-version-of-tanium-installers
   - name: chrony_aws
     src: https://github.com/cisagov/ansible-role-chrony-aws
   - name: clamav
