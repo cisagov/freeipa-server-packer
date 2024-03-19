@@ -20,7 +20,6 @@ roles:
     src: https://github.com/cisagov/ansible-role-cloudwatch-agent
   - name: crowdstrike
     src: https://github.com/cisagov/ansible-role-crowdstrike
-    version: improvement/upgrade-tolatest-system-packages
   - name: freeipa
     src: https://github.com/cisagov/ansible-role-freeipa-server
   - name: harden
