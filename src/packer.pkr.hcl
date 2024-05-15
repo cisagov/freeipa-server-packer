@@ -73,9 +73,9 @@ variable "skip_create_ami" {
   type        = bool
 }
 
-data "amazon-ami" "fedora_39" {
+data "amazon-ami" "fedora_40" {
   filters = {
-    name                = "Fedora-Cloud-Base-39-*x86_64-hvm-*-gp3-*"
+    name                = "Fedora-Cloud-Base-AmazonEC2.x86_64-40-*"
     root-device-type    = "ebs"
     virtualization-type = "hvm"
   }
@@ -103,7 +103,7 @@ source "amazon-ebs" "freeipa" {
   region             = var.build_region
   region_kms_key_ids = var.region_kms_keys
   skip_create_ami    = var.skip_create_ami
-  source_ami         = data.amazon-ami.fedora_39.id
+  source_ami         = data.amazon-ami.fedora_40.id
   ssh_username       = "fedora"
   subnet_filter {
     filters = {
@@ -112,9 +112,9 @@ source "amazon-ebs" "freeipa" {
   }
   tags = {
     Application        = "FreeIPA server"
-    Base_AMI_Name      = data.amazon-ami.fedora_39.name
+    Base_AMI_Name      = data.amazon-ami.fedora_40.name
     GitHub_Release_URL = var.release_url
-    OS_Version         = "Fedora 39"
+    OS_Version         = "Fedora 40"
     Pre_Release        = var.is_prerelease
     Release            = var.release_tag
     Team               = "VM Fusion - Development"
