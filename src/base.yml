@@ -27,3 +27,6 @@
       ansible.builtin.package:
         name:
           - python3-libselinux
+    - name: Install and configure systemd-resolved
+      ansible.builtin.include_role:
+        name: systemd_resolved
