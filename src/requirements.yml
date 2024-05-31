@@ -23,7 +23,6 @@ roles:
     src: https://github.com/cisagov/ansible-role-freeipa-server
   - name: harden
     src: https://github.com/cisagov/ansible-role-hardening-2
-    version: bugfix/ignore-auditd-restart-failure
   - name: htop
     src: https://github.com/cisagov/ansible-role-htop
   - name: libselinux_python
