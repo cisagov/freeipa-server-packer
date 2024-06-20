@@ -30,7 +30,6 @@ roles:
     src: https://github.com/cisagov/ansible-role-nvme
   - name: persist_journald
     src: https://github.com/cisagov/ansible-role-persist-journald
-    version: improvement/use-drop-in
   - name: pip
     src: https://github.com/cisagov/ansible-role-pip
   - name: python
