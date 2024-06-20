@@ -16,7 +16,6 @@ roles:
     src: https://github.com/cisagov/ansible-role-clamav
   - name: cloudwatch_agent
     src: https://github.com/cisagov/ansible-role-cloudwatch-agent
-    version: improvement/use-drop-in-conf-file
   - name: crowdstrike
     src: https://github.com/cisagov/ansible-role-crowdstrike
   - name: freeipa
