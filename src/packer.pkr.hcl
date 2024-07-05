@@ -75,7 +75,7 @@ variable "skip_create_ami" {
 
 data "amazon-ami" "fedora_39" {
   filters = {
-    name                = "Fedora-Cloud-Base-39-*x86_64-hvm-*-gp3-*"
+    name                = "Fedora-Cloud-Base-39-*aarch64-hvm-*-gp3-*"
     root-device-type    = "ebs"
     virtualization-type = "hvm"
   }
@@ -87,11 +87,11 @@ data "amazon-ami" "fedora_39" {
 locals { timestamp = regex_replace(timestamp(), "[- TZ:]", "") }
 
 source "amazon-ebs" "freeipa" {
-  ami_name                    = "freeipa-server-hvm-${local.timestamp}-x86_64-ebs"
+  ami_name                    = "freeipa-server-hvm-${local.timestamp}-arm64-ebs"
   ami_regions                 = var.ami_regions
   associate_public_ip_address = true
   encrypt_boot                = true
-  instance_type               = "t3.small"
+  instance_type               = "t4g.small"
   kms_key_id                  = var.build_region_kms
   launch_block_device_mappings {
     delete_on_termination = true
