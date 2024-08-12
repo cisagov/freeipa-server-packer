@@ -8,6 +8,7 @@
       ansible.builtin.include_role:
         name: freeipa
       vars:
+        freeipa_disable_inactive_users: true
         freeipa_disable_trace: true
         freeipa_enable_hsts: true
 
