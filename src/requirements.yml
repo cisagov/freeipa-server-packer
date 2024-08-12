@@ -20,7 +20,6 @@ roles:
     src: https://github.com/cisagov/ansible-role-crowdstrike
   - name: freeipa
     src: https://github.com/cisagov/ansible-role-freeipa-server
-    version: improvement/disable-kdc-disable-last-success
   - name: harden
     src: https://github.com/cisagov/ansible-role-hardening-2
   - name: htop
