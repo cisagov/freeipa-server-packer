@@ -119,7 +119,7 @@ locals { timestamp = regex_replace(timestamp(), "[- TZ:]", "") }
 #   region_kms_key_ids = var.region_kms_keys
 #   skip_create_ami    = var.skip_create_ami
 #   source_ami         = data.amazon-ami.fedora_39_arm64.id
-#   ssh_username       = "admin"
+#   ssh_username       = "fedora"
 #   subnet_filter {
 #     filters = {
 #       "tag:Name" = "AMI Build"
