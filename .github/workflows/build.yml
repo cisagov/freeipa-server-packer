@@ -242,7 +242,8 @@ jobs:
       fail-fast: false
       matrix:
         architecture:
-          - arm64
+          # The CDM Nessus Agent does not support ARM64 on Fedora.
+          # - arm64
           - x86_64
     steps:
       - id: harden-runner
