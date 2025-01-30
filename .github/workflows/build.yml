@@ -316,7 +316,6 @@ jobs:
             -var cdm_enabled=false \
             -var github_ref_name=${{ github.ref_name }} \
             -var github_sha=${{ github.sha }} \
-            -var skip_create_ami=true \
             .
       - name: Remove /usr/bin/python3 symlink to the installed Python
         run: |
