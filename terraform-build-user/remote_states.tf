@@ -35,6 +35,9 @@ data "terraform_remote_state" "images" {
 }
 
 data "terraform_remote_state" "ansible_role_cdm_certificates" {
+  # The only supported CDM environment is production.
+  count = terraform.workspace == "production" ? 1 : 0
+
   backend = "s3"
 
   config = {
@@ -48,6 +51,9 @@ data "terraform_remote_state" "ansible_role_cdm_certificates" {
 }
 
 data "terraform_remote_state" "ansible_role_cdm_nessus_agent" {
+  # The only supported CDM environment is production.
+  count = terraform.workspace == "production" ? 1 : 0
+
   backend = "s3"
 
   config = {
@@ -61,6 +67,9 @@ data "terraform_remote_state" "ansible_role_cdm_nessus_agent" {
 }
 
 data "terraform_remote_state" "ansible_role_crowdstrike" {
+  # The only supported CDM environment is production.
+  count = terraform.workspace == "production" ? 1 : 0
+
   backend = "s3"
 
   config = {

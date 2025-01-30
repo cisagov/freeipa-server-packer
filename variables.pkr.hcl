@@ -38,6 +38,12 @@ variable "build_region_kms" {
   type        = string
 }
 
+variable "cdm_enabled" {
+  default     = false
+  description = "Indicate whether or not the CDM tools should be installed on the AMI."
+  type        = bool
+}
+
 variable "github_ref_name" {
   default     = ""
   description = "The GitHub short ref name to use for the tags applied to the created AMI."

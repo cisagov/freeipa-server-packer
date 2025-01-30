@@ -17,26 +17,35 @@ module "iam_user" {
 # Attach 3rd party S3 bucket read-only policy from
 # cisagov/ansible-role-cdm-certificates to the EC2AMICreate role
 resource "aws_iam_role_policy_attachment" "thirdpartybucketread_certificates" {
+  # The only supported CDM environment is production.
+  count = terraform.workspace == "production" ? 1 : 0
+
   provider = aws.images-ami
 
-  policy_arn = data.terraform_remote_state.ansible_role_cdm_certificates.outputs.production_bucket_policy.arn
+  policy_arn = data.terraform_remote_state.ansible_role_cdm_certificates[0].outputs.production_bucket_policy.arn
   role       = module.iam_user.ec2amicreate_role.name
 }
 
 # Attach 3rd party S3 bucket read-only policy from
 # cisagov/ansible-role-crowdstrike to the EC2AMICreate role
 resource "aws_iam_role_policy_attachment" "thirdpartybucketread_crowdstrike" {
+  # The only supported CDM environment is production.
+  count = terraform.workspace == "production" ? 1 : 0
+
   provider = aws.images-ami
 
-  policy_arn = data.terraform_remote_state.ansible_role_crowdstrike.outputs.production_bucket_policy.arn
+  policy_arn = data.terraform_remote_state.ansible_role_crowdstrike[0].outputs.production_bucket_policy.arn
   role       = module.iam_user.ec2amicreate_role.name
 }
 
 # Attach 3rd party S3 bucket read-only policy from
 # cisagov/ansible-role-cdm-nessus-agent to the EC2AMICreate role
 resource "aws_iam_role_policy_attachment" "thirdpartybucketread_nessus" {
+  # The only supported CDM environment is production.
+  count = terraform.workspace == "production" ? 1 : 0
+
   provider = aws.images-ami
 
-  policy_arn = data.terraform_remote_state.ansible_role_cdm_nessus_agent.outputs.production_bucket_policy.arn
+  policy_arn = data.terraform_remote_state.ansible_role_cdm_nessus_agent[0].outputs.production_bucket_policy.arn
   role       = module.iam_user.ec2amicreate_role.name
 }

@@ -19,7 +19,7 @@ build {
 
   provisioner "ansible" {
     ansible_env_vars = ["AWS_DEFAULT_REGION=${var.build_region}"]
-    extra_arguments  = ["--extra-vars", "build_bucket=${var.build_bucket}"]
+    extra_arguments  = ["--extra-vars", "build_bucket=${var.build_bucket}", "--extra-vars", "cdm_enabled=${var.cdm_enabled}"]
     playbook_file    = "ansible/playbook.yml"
     use_proxy        = false
     use_sftp         = true
