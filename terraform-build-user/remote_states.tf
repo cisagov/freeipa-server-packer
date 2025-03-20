@@ -48,6 +48,8 @@ data "terraform_remote_state" "ansible_role_cdm_certificates" {
     profile        = "cool-terraform-backend"
     region         = "us-east-1"
   }
+
+  workspace = "production"
 }
 
 data "terraform_remote_state" "ansible_role_cdm_nessus_agent" {
@@ -64,6 +66,8 @@ data "terraform_remote_state" "ansible_role_cdm_nessus_agent" {
     profile        = "cool-terraform-backend"
     region         = "us-east-1"
   }
+
+  workspace = "production"
 }
 
 data "terraform_remote_state" "ansible_role_crowdstrike" {
@@ -80,6 +84,8 @@ data "terraform_remote_state" "ansible_role_crowdstrike" {
     profile        = "cool-terraform-backend"
     region         = "us-east-1"
   }
+
+  workspace = "production"
 }
 
 data "terraform_remote_state" "users" {

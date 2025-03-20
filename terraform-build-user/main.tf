@@ -22,7 +22,7 @@ resource "aws_iam_role_policy_attachment" "thirdpartybucketread_certificates" {
 
   provider = aws.images-ami
 
-  policy_arn = data.terraform_remote_state.ansible_role_cdm_certificates[0].outputs.production_bucket_policy.arn
+  policy_arn = data.terraform_remote_state.ansible_role_cdm_certificates[0].outputs.bucket_access_policy.arn
   role       = module.iam_user.ec2amicreate_role.name
 }
 
@@ -34,7 +34,7 @@ resource "aws_iam_role_policy_attachment" "thirdpartybucketread_crowdstrike" {
 
   provider = aws.images-ami
 
-  policy_arn = data.terraform_remote_state.ansible_role_crowdstrike[0].outputs.production_bucket_policy.arn
+  policy_arn = data.terraform_remote_state.ansible_role_crowdstrike[0].outputs.bucket_access_policy.arn
   role       = module.iam_user.ec2amicreate_role.name
 }
 
@@ -46,6 +46,6 @@ resource "aws_iam_role_policy_attachment" "thirdpartybucketread_nessus" {
 
   provider = aws.images-ami
 
-  policy_arn = data.terraform_remote_state.ansible_role_cdm_nessus_agent[0].outputs.production_bucket_policy.arn
+  policy_arn = data.terraform_remote_state.ansible_role_cdm_nessus_agent[0].outputs.bucket_access_policy.arn
   role       = module.iam_user.ec2amicreate_role.name
 }
