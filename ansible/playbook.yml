@@ -16,6 +16,7 @@
 
 - name: Import CISA CDM playbook
   ansible.builtin.import_playbook: cdm.yml
+  when: cdm_enabled | bool
 
 - name: Import AWS playbook
   ansible.builtin.import_playbook: aws.yml

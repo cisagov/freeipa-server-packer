@@ -38,6 +38,23 @@ variable "build_region_kms" {
   type        = string
 }
 
+variable "cdm_enabled" {
+  default     = false
+  description = "Indicate whether or not the CDM tools should be installed on the AMI."
+  type        = bool
+}
+
+variable "github_ref_name" {
+  default     = ""
+  description = "The GitHub short ref name to use for the tags applied to the created AMI."
+  type        = string
+}
+
+variable "github_sha" {
+  default     = ""
+  description = "The GitHub commit SHA to use for the tags applied to the created AMI."
+  type        = string
+}
 variable "is_prerelease" {
   default     = false
   description = "The pre-release status to use for the tags applied to the created AMI."
