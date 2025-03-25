@@ -10,6 +10,7 @@ module "iam_user" {
   ssm_parameters = [
     "/cyhy/dev/users",
     "/ssh/public_keys/*",
+    "/third_party_bucket_name",
   ]
   user_name = "build-freeipa-server-packer"
 }
