@@ -10,6 +10,9 @@ module "iam_user" {
   ssm_parameters = [
     "/cyhy/dev/users",
     "/ssh/public_keys/*",
+    # Any Packer AMIs that require access to the third-party bucket
+    # will also require access to this SSM Parameter Store parameter.
+    # "/third_party_bucket_name",
   ]
   user_name = "build-freeipa-server-packer"
 }
