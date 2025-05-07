@@ -14,6 +14,7 @@ roles:
     src: https://github.com/cisagov/ansible-role-chrony-aws
   - name: clamav
     src: https://github.com/cisagov/ansible-role-clamav
+    version: bugfix/use-follow
   - name: cloudwatch_agent
     src: https://github.com/cisagov/ansible-role-cloudwatch-agent
   - name: crowdstrike
