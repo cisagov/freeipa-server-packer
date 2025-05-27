@@ -42,4 +42,3 @@ roles:
     src: https://github.com/cisagov/ansible-role-ufw
   - name: upgrade
     src: https://github.com/cisagov/ansible-role-upgrade
-    version: bugfix/reinstall-file-package-for-fedora42
