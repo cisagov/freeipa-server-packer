@@ -5,11 +5,6 @@ build {
     "source.amazon-ebs.x86_64",
   ]
 
-  provisioner "shell" {
-    execute_command = "chmod +x {{ .Path }}; sudo env {{ .Vars }} {{ .Path }} ; rm -f {{ .Path }}"
-    inline          = ["echo daspasswort | passwd fedora --stdin"]
-  }
-
   provisioner "ansible" {
     playbook_file = "ansible/upgrade.yml"
     use_proxy     = false
