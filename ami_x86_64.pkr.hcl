@@ -15,7 +15,7 @@ source "amazon-ebs" "x86_64" {
   region             = var.build_region
   region_kms_key_ids = var.region_kms_keys
   skip_create_ami    = var.skip_create_ami
-  source_ami         = data.amazon-ami.fedora_39_x86_64.id
+  source_ami         = data.amazon-ami.fedora_42_x86_64.id
   ssh_username       = "fedora"
   subnet_filter {
     filters = {
@@ -25,11 +25,11 @@ source "amazon-ebs" "x86_64" {
   tags = {
     Application        = "FreeIPA server"
     Architecture       = "x86_64"
-    Base_AMI_Name      = data.amazon-ami.fedora_39_x86_64.name
+    Base_AMI_Name      = data.amazon-ami.fedora_42_x86_64.name
     GitHub_Ref_Name    = var.github_ref_name
     GitHub_Release_URL = var.release_url
     GitHub_SHA         = var.github_sha
-    OS_Version         = "Fedora 39"
+    OS_Version         = "Fedora 42"
     Pre_Release        = var.is_prerelease
     Release            = var.release_tag
     Team               = "VM Fusion - Development"
