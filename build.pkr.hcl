@@ -33,6 +33,9 @@ build {
     # noexec bit set on it.
     execute_command = "chmod +x {{ .Path }}; sudo env {{ .Vars }} bash {{ .Path }} ; rm -f {{ .Path }}"
     skip_clean      = true
-    inline          = ["update-crypto-policies --set DEFAULT", "sed -i '/^users:/ {N; s/users:.*/users: []/g}' /etc/cloud/cloud.cfg", "rm --force /etc/sudoers.d/90-cloud-init-users", "rm --force /root/.ssh/authorized_keys", "/usr/sbin/userdel --remove --force fedora"]
+    # TODO: Remove the explicit allowing of SHA-1 in the
+    # update-crypto-policies command when possible.  See #143 for more
+    # details.
+    inline = ["update-crypto-policies --set DEFAULT:SHA1", "sed -i '/^users:/ {N; s/users:.*/users: []/g}' /etc/cloud/cloud.cfg", "rm --force /etc/sudoers.d/90-cloud-init-users", "rm --force /root/.ssh/authorized_keys", "/usr/sbin/userdel --remove --force fedora"]
   }
 }
