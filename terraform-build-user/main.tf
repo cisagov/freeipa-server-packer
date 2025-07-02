@@ -19,7 +19,7 @@ module "iam_user" {
 # cisagov/ansible-role-cdm-certificates to the EC2AMICreate role
 resource "aws_iam_role_policy_attachment" "thirdpartybucketread_certificates" {
   # The only supported CDM environment is production.
-  count = terraform.workspace == "production" ? 1 : 0
+  count = terraform.workspace == "production" ? 1 : 1
 
   provider = aws.images-ami
 
@@ -31,7 +31,7 @@ resource "aws_iam_role_policy_attachment" "thirdpartybucketread_certificates" {
 # cisagov/ansible-role-crowdstrike to the EC2AMICreate role
 resource "aws_iam_role_policy_attachment" "thirdpartybucketread_crowdstrike" {
   # The only supported CDM environment is production.
-  count = terraform.workspace == "production" ? 1 : 0
+  count = terraform.workspace == "production" ? 1 : 1
 
   provider = aws.images-ami
 
@@ -43,7 +43,7 @@ resource "aws_iam_role_policy_attachment" "thirdpartybucketread_crowdstrike" {
 # cisagov/ansible-role-cdm-nessus-agent to the EC2AMICreate role
 resource "aws_iam_role_policy_attachment" "thirdpartybucketread_nessus" {
   # The only supported CDM environment is production.
-  count = terraform.workspace == "production" ? 1 : 0
+  count = terraform.workspace == "production" ? 1 : 1
 
   provider = aws.images-ami
 
