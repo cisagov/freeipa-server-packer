@@ -18,7 +18,6 @@ roles:
     src: https://github.com/cisagov/ansible-role-cloudwatch-agent
   - name: crowdstrike
     src: https://github.com/cisagov/ansible-role-crowdstrike
-    version: v2.0.1-rc.1
   - name: freeipa
     src: https://github.com/cisagov/ansible-role-freeipa-server
   - name: harden
