@@ -20,6 +20,7 @@ roles:
     src: https://github.com/cisagov/ansible-role-crowdstrike
   - name: freeipa
     src: https://github.com/cisagov/ansible-role-freeipa-server
+    version: v2.1.0-rc.7
   - name: harden
     src: https://github.com/cisagov/ansible-role-hardening-2
   - name: htop
