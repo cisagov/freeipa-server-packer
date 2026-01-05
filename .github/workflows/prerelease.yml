@@ -162,7 +162,7 @@ jobs:
           packer build -only amazon-ebs.${{ matrix.architecture }} \
             -timestamp-ui \
             -var build_bucket=${{ steps.get-third-party-bucket-name.outputs.name }} \
-            -var cdm_enabled=false \
+            -var cdm_enabled=true \
             -var github_ref_name=${{ github.ref_name }} \
             -var github_sha=${{ github.sha }} \
             -var is_prerelease=${{ github.event.release.prerelease }} \
