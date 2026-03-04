@@ -4,13 +4,18 @@ collections:
   # lookup plugin to pull parameter values from AWS Parameter Store.
   - amazon.aws
   # Required by the following Ansible roles:
-  # - ansible-role-amazon-efs-utils (uses community.general.json_query
-  #   and community.general.make)
   # - ansible-role-amazon-ssm-agent (uses community.general.snap)
   # - ansible-role-automated-security-updates (uses community.general.ini_file)
   # - ansible-role-cloudwatch-agent (uses community.general.ini_file)
+  # - ansible-role-hardening-2 (uses community.general.modprobe and
+  #   community.general.ufw)
   # - ansible-role-persist-journald (uses community.general.ini_file)
   # - ansible-role-systemd-resolved (uses community.general.ini_file)
+  # - ansible-role-ufw (uses community.general.ufw)
+  #
+  # Also required by the following playbooks:
+  # - ansible/cdm.yml (uses community.general.ufw)
+  # - ansible/ufw.yml (uses community.general.ufw)
   - community.general
 roles:
   - name: amazon_ssm_agent
