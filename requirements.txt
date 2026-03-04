@@ -13,9 +13,11 @@ ansible>=10,<11
 # requirements-test.txt in cisagov/skeleton-ansible-role and
 # .pre-commit-config.yaml in cisagov/skeleton-generic.
 ansible-core>=2.17.7
-# Required because we are using the amazon.aws.ssm_parameter Ansible
-# lookup plugin to pull parameters value from AWS Parameter Store:
-# https://docs.ansible.com/projects/ansible/latest/collections/amazon/aws/ssm_parameter_lookup.html#ansible-collections-amazon-aws-ssm-parameter-lookup
+# Required because we are using the amazon.aws.s3_object Ansible module
+# in our Ansible code in the following roles:
+# - ansible-role-cdm-nessus-agent (uses amazon.aws.s3_object)
+# - ansible-role-crowdstrike (uses amazon.aws.s3_object)
+# https://docs.ansible.com/projects/ansible/latest/collections/amazon/aws/s3_object_module.html
 boto3
 # The bump-version script requires at least version 3 of semver.
 semver>=3
