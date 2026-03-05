@@ -1,5 +1,22 @@
 ---
 collections:
+  # Required by the following Ansible roles:
+  # - ansible-role-cdm-nessus-agent (uses amazon.aws.s3_object)
+  # - ansible-role-crowdstrike (uses amazon.aws.s3_object)
+  - amazon.aws
+  # Required by the following Ansible roles:
+  # - ansible-role-amazon-ssm-agent (uses community.general.snap)
+  # - ansible-role-automated-security-updates (uses community.general.ini_file)
+  # - ansible-role-cloudwatch-agent (uses community.general.ini_file)
+  # - ansible-role-hardening-2 (uses community.general.modprobe and
+  #   community.general.ufw)
+  # - ansible-role-persist-journald (uses community.general.ini_file)
+  # - ansible-role-systemd-resolved (uses community.general.ini_file)
+  # - ansible-role-ufw (uses community.general.ufw)
+  #
+  # Also required by the following playbooks:
+  # - ansible/cdm.yml (uses community.general.ufw)
+  # - ansible/ufw.yml (uses community.general.ufw)
   - community.general
 roles:
   - name: amazon_ssm_agent
