@@ -20,5 +20,5 @@ ansible-core>=2.17.7
 # https://docs.ansible.com/projects/ansible/latest/collections/amazon/aws/s3_object_module.html
 boto3
 # The bump-version script requires at least version 3 of semver.
-semver>=3
+semver>=3.0.4
 setuptools>=70.1
