@@ -7,6 +7,8 @@ collections:
   # Required by the following Ansible roles:
   # - ansible-role-cdm-nessus-agent (uses amazon.aws.s3_object)
   # - ansible-role-crowdstrike (uses amazon.aws.s3_object)
+  # - ansible-role-qualys-cloud-agent (uses amazon.aws.s3_object and
+  #   amazon.aws.s3_object_info)
   - amazon.aws
   # Required by the following Ansible roles:
   # - ansible-role-amazon-ssm-agent (uses community.general.snap)
@@ -55,6 +57,9 @@ roles:
     src: https://github.com/cisagov/ansible-role-pip
   - name: python
     src: https://github.com/cisagov/ansible-role-python
+  - name: qualys
+    src: https://github.com/cisagov/ansible-role-qualys-cloud-agent
+    version: first-commits
   - name: remove_python2
     src: https://github.com/cisagov/ansible-role-remove-python2
   - name: systemd_resolved
