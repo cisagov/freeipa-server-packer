@@ -59,7 +59,6 @@ roles:
     src: https://github.com/cisagov/ansible-role-python
   - name: qualys
     src: https://github.com/cisagov/ansible-role-qualys-cloud-agent
-    version: first-commits
   - name: remove_python2
     src: https://github.com/cisagov/ansible-role-remove-python2
   - name: systemd_resolved
