@@ -20,6 +20,11 @@
         name: crowdstrike
       vars:
         crowdstrike_third_party_bucket_name: "{{ build_bucket }}"
+    - name: Install Qualys Cloud Agent
+      ansible.builtin.include_role:
+        name: qualys
+      vars:
+        qualys_third_party_bucket_name: "{{ build_bucket }}"
     - name: Configure UFW for CISA CDM traffic
       community.general.ufw:
         comment: >
@@ -32,7 +37,7 @@
       loop: "{{ ports }}"
       vars:
         ports:
-          # CrowdStrike
+          # CrowdStrike and Qualys
           - direction: out
             port: 443
             proto: tcp

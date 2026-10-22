@@ -41,3 +41,12 @@ resource "aws_iam_role_policy_attachment" "thirdpartybucketread_nessus" {
   policy_arn = data.terraform_remote_state.ansible_role_cdm_nessus_agent.outputs.bucket_access_policy.arn
   role       = module.iam_user.ec2amicreate_role.name
 }
+
+# Attach 3rd party S3 bucket read-only policy from
+# cisagov/ansible-role-qualys-cloud-agent to the EC2AMICreate role
+resource "aws_iam_role_policy_attachment" "thirdpartybucketread_qualys" {
+  provider = aws.images-ami
+
+  policy_arn = data.terraform_remote_state.ansible_role_qualys_cloud_agent.outputs.bucket_access_policy.arn
+  role       = module.iam_user.ec2amicreate_role.name
+}
